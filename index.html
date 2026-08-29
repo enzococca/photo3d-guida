@@ -1,0 +1,625 @@
+<title>Photo3D sul campo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+
+<style>
+  :root {
+    --carta: #f3f5f6;
+    --carta-alta: #ffffff;
+    --inchiostro: #16242e;
+    --inchiostro-tenue: #52646f;
+    --linea: #d3dbdf;
+    --accento: #0f7d7a;
+    --accento-tenue: #e2f0ef;
+    --ocra: #a8641b;
+    --ocra-tenue: #f7ecdd;
+    --terminale-fondo: #142027;
+    --terminale-testo: #d7e6e6;
+    --terminale-prompt: #55b3a5;
+    --ombra: 0 1px 2px rgba(22, 36, 46, .06), 0 8px 24px -16px rgba(22, 36, 46, .35);
+    --misura: 66ch;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --carta: #0e171d;
+      --carta-alta: #16232b;
+      --inchiostro: #e6eef1;
+      --inchiostro-tenue: #9bb0ba;
+      --linea: #26383f;
+      --accento: #4fc4b4;
+      --accento-tenue: #12312f;
+      --ocra: #e0a35c;
+      --ocra-tenue: #2e2416;
+      --terminale-fondo: #0a1216;
+      --terminale-testo: #d7e6e6;
+      --terminale-prompt: #55b3a5;
+      --ombra: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px -18px rgba(0, 0, 0, .8);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --carta: #0e171d;
+    --carta-alta: #16232b;
+    --inchiostro: #e6eef1;
+    --inchiostro-tenue: #9bb0ba;
+    --linea: #26383f;
+    --accento: #4fc4b4;
+    --accento-tenue: #12312f;
+    --ocra: #e0a35c;
+    --ocra-tenue: #2e2416;
+    --terminale-fondo: #0a1216;
+    --terminale-testo: #d7e6e6;
+    --terminale-prompt: #55b3a5;
+    --ombra: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px -18px rgba(0, 0, 0, .8);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carta);
+    color: var(--inchiostro);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .foglio {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 20px 96px;
+  }
+
+  @media (min-width: 1000px) {
+    .foglio { grid-template-columns: 232px minmax(0, 1fr); gap: 56px; padding-right: 40px; }
+  }
+
+  /* ---------- testata ---------- */
+  header.testata {
+    grid-column: 1 / -1;
+    padding: 72px 0 40px;
+    border-bottom: 1px solid var(--linea);
+    margin-bottom: 48px;
+  }
+
+  .occhiello {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accento);
+    margin: 0 0 18px;
+  }
+
+  h1 {
+    font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 1.02;
+    letter-spacing: -.02em;
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+
+  .sommario {
+    max-width: var(--misura);
+    font-size: 1.16rem;
+    color: var(--inchiostro-tenue);
+    margin: 0;
+  }
+
+  /* ---------- catena ---------- */
+  .catena {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 34px;
+  }
+
+  .anello {
+    flex: 1 1 190px;
+    background: var(--carta-alta);
+    border: 1px solid var(--linea);
+    border-radius: 3px;
+    padding: 14px 16px;
+    box-shadow: var(--ombra);
+  }
+
+  .anello b {
+    display: block;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .anello span {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    color: var(--inchiostro-tenue);
+  }
+
+  .freccia {
+    align-self: center;
+    color: var(--accento);
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  /* ---------- indice ---------- */
+  nav.indice {
+    display: none;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+  }
+
+  @media (min-width: 1000px) {
+    nav.indice { display: block; position: sticky; top: 28px; align-self: start; }
+  }
+
+  nav.indice ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  nav.indice a { color: var(--inchiostro-tenue); text-decoration: none; display: block; padding: 2px 0; border-left: 2px solid transparent; padding-left: 12px; }
+  nav.indice a:hover, nav.indice a:focus-visible { color: var(--accento); border-left-color: var(--accento); }
+  nav.indice .num { color: var(--accento); margin-right: 8px; }
+
+  /* ---------- corpo ---------- */
+  main { min-width: 0; }
+
+  section.passo { margin-bottom: 64px; scroll-margin-top: 24px; }
+
+  .capo {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+
+  .capo .num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--accento);
+    padding-top: 4px;
+  }
+
+  h2 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.55rem, 3vw, 2.05rem);
+    letter-spacing: -.01em;
+    line-height: 1.12;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 600;
+    font-size: 1.12rem;
+    margin: 28px 0 8px;
+  }
+
+  p, li { max-width: var(--misura); }
+  p { margin: 0 0 14px; }
+  ul, ol.elenco { padding-left: 22px; margin: 0 0 16px; }
+  li { margin-bottom: 7px; }
+
+  a { color: var(--accento); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accento); outline-offset: 3px; }
+
+  code {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .84em;
+    background: var(--accento-tenue);
+    color: var(--inchiostro);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  pre {
+    font-family: "IBM Plex Mono", monospace;
+    background: var(--terminale-fondo);
+    color: var(--terminale-testo);
+    font-size: 13.5px;
+    line-height: 1.7;
+    padding: 16px 18px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 0 0 16px;
+  }
+
+  pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+  pre .p { color: var(--terminale-prompt); user-select: none; }
+  pre .c { color: #7f97a1; }
+
+  /* ---------- schede piattaforma ---------- */
+  .schede { border: 1px solid var(--linea); border-radius: 4px; background: var(--carta-alta); box-shadow: var(--ombra); margin-bottom: 20px; }
+  .linguette { display: flex; flex-wrap: wrap; gap: 2px; border-bottom: 1px solid var(--linea); padding: 6px 6px 0; }
+
+  .linguette button {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    background: none;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    color: var(--inchiostro-tenue);
+    padding: 9px 14px;
+    cursor: pointer;
+  }
+
+  .linguette button[aria-selected="true"] { color: var(--accento); border-bottom-color: var(--accento); }
+  .pannello { padding: 22px 22px 6px; }
+  .pannello[hidden] { display: none; }
+
+  /* ---------- note ---------- */
+  .nota {
+    border-left: 3px solid var(--accento);
+    background: var(--accento-tenue);
+    padding: 12px 16px;
+    border-radius: 0 3px 3px 0;
+    margin: 0 0 18px;
+    max-width: var(--misura);
+  }
+
+  .nota.attenzione { border-left-color: var(--ocra); background: var(--ocra-tenue); }
+  .nota p:last-child { margin-bottom: 0; }
+  .nota b { font-family: "Bricolage Grotesque", sans-serif; }
+
+  /* ---------- guasti ---------- */
+  .guasti { display: flex; flex-direction: column; gap: 2px; border-top: 1px solid var(--linea); }
+
+  .guasto { border-bottom: 1px solid var(--linea); padding: 18px 0; display: grid; gap: 6px; }
+
+  @media (min-width: 760px) {
+    .guasto { grid-template-columns: 34% 1fr; gap: 24px; align-items: start; }
+  }
+
+  .guasto .sintomo {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .guasto .rimedio { margin: 0; color: var(--inchiostro-tenue); font-size: .96rem; }
+  .guasto .rimedio strong { color: var(--inchiostro); font-weight: 600; }
+  .guasto .rimedio code { font-size: .8em; }
+
+  /* ---------- chiusura ---------- */
+  footer {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--linea);
+    margin-top: 24px;
+    padding-top: 22px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    color: var(--inchiostro-tenue);
+  }
+
+  .tabellina { width: 100%; border-collapse: collapse; font-size: .92rem; margin-bottom: 18px; }
+  .tabellina th, .tabellina td { text-align: left; padding: 9px 12px 9px 0; border-bottom: 1px solid var(--linea); vertical-align: top; }
+  .tabellina th { font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: .82rem; text-transform: uppercase; letter-spacing: .06em; color: var(--inchiostro-tenue); }
+  .avvolgi { overflow-x: auto; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<div class="foglio">
+
+  <header class="testata">
+    <p class="occhiello">Guida di campo · installazione e uso</p>
+    <h1>Photo3D sul campo</h1>
+    <p class="sommario">Fotografi un oggetto o uno scavo col telefono, il tuo computer costruisce il modello 3D. Questa guida ti porta dall'installazione al modello condiviso, un passo alla volta. Non serve saper usare il terminale: dove c'è un comando, si copia e si incolla.</p>
+
+    <div class="catena">
+      <div class="anello"><b>App</b><span>iPhone · iPad · Android</span></div>
+      <div class="freccia" aria-hidden="true">→</div>
+      <div class="anello"><b>Server</b><span>Mac · Windows · Linux</span></div>
+      <div class="freccia" aria-hidden="true">→</div>
+      <div class="anello"><b>Motore</b><span>Metashape · WebODM</span></div>
+      <div class="freccia" aria-hidden="true">→</div>
+      <div class="anello"><b>Modello 3D</b><span>OBJ · nuvola · sezioni</span></div>
+    </div>
+  </header>
+
+  <nav class="indice" aria-label="Indice">
+    <ol>
+      <li><a href="#p1"><span class="num">01</span>Installa il server</a></li>
+      <li><a href="#p2"><span class="num">02</span>Scegli il motore</a></li>
+      <li><a href="#p3"><span class="num">03</span>Installa l'app</a></li>
+      <li><a href="#p4"><span class="num">04</span>Collega app e server</a></li>
+      <li><a href="#p5"><span class="num">05</span>Scatta le foto</a></li>
+      <li><a href="#p6"><span class="num">06</span>Isola l'oggetto</a></li>
+      <li><a href="#p7"><span class="num">07</span>Dai la misura reale</a></li>
+      <li><a href="#p8"><span class="num">08</span>Invia ed elabora</a></li>
+      <li><a href="#p9"><span class="num">09</span>Guarda e misura</a></li>
+      <li><a href="#p10"><span class="num">10</span>Unisci due riprese</a></li>
+      <li><a href="#p11"><span class="num">11</span>Condividi</a></li>
+      <li><a href="#p12"><span class="num">12</span>Lavora da fuori</a></li>
+      <li><a href="#guasti"><span class="num">SOS</span>Se qualcosa non va</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <section class="passo" id="p1">
+      <div class="capo"><span class="num">01</span><h2>Installa il server sul computer</h2></div>
+      <p>Il server è il programma che riceve le foto e comanda l'elaborazione. Va installato una volta sola, sul computer che farà i calcoli. Scegli la tua piattaforma.</p>
+
+      <div class="schede">
+        <div class="linguette" role="tablist" aria-label="Sistema del computer">
+          <button role="tab" id="t-mac" aria-controls="s-mac" aria-selected="true">macOS</button>
+          <button role="tab" id="t-win" aria-controls="s-win" aria-selected="false">Windows</button>
+          <button role="tab" id="t-lin" aria-controls="s-lin" aria-selected="false">Linux</button>
+        </div>
+
+        <div class="pannello" role="tabpanel" id="s-mac" aria-labelledby="t-mac">
+          <ol class="elenco">
+            <li>Apri <b>Photo3DServer.dmg</b>.</li>
+            <li>Trascina <b>Photo3D Server</b> sulla cartella <b>Applicazioni</b> che vedi accanto.</li>
+            <li>Aprila dal Launchpad e premi <b>Avvia</b>.</li>
+          </ol>
+          <p>Al primo avvio prepara da solo l'ambiente (pochi secondi). La finestra mostra il semaforo verde, la cartella di salvataggio e un <b>QR</b> che servirà all'app.</p>
+        </div>
+
+        <div class="pannello" role="tabpanel" id="s-win" aria-labelledby="t-win" hidden>
+          <ol class="elenco">
+            <li>Scompatta <b>Photo3DServer-Windows.zip</b> dove preferisci.</li>
+            <li>Doppio click su <b>photo3d-server.exe</b>. Se preferisci partire dai sorgenti: tasto destro su <code>avvia-server.ps1</code> → <i>Esegui con PowerShell</i>.</li>
+            <li>Windows chiederà il permesso di rete: scegli <b>Consenti</b> sulle reti private.</li>
+          </ol>
+          <p>La finestra del terminale resta aperta e mostra l'indirizzo del server: lasciala aperta mentre lavori.</p>
+        </div>
+
+        <div class="pannello" role="tabpanel" id="s-lin" aria-labelledby="t-lin" hidden>
+          <p>Con il pacchetto <b>.deb</b> (Debian, Ubuntu e derivate):</p>
+          <pre><code><span class="p">$</span> sudo apt install ./photo3d-server_1.0.0_amd64.deb
+<span class="p">$</span> sudo systemctl enable --now photo3d</code></pre>
+          <p>Il server parte da solo a ogni accensione. Per controllarlo:</p>
+          <pre><code><span class="p">$</span> systemctl status photo3d      <span class="c"># sta girando?</span>
+<span class="p">$</span> journalctl -u photo3d -f      <span class="c"># cosa sta facendo</span></code></pre>
+        </div>
+      </div>
+
+      <div class="nota">
+        <p><b>Dove finiscono le foto.</b> Il server usa il primo disco esterno che trova, altrimenti la cartella Immagini. Puoi cambiarla dalla finestra sul Mac, o dall'app per ogni singola sessione.</p>
+      </div>
+    </section>
+
+    <section class="passo" id="p2">
+      <div class="capo"><span class="num">02</span><h2>Scegli il motore di calcolo</h2></div>
+      <p>Il server non calcola da solo: si appoggia a un motore fotogrammetrico. Te ne serve almeno uno.</p>
+
+      <div class="avvolgi">
+        <table class="tabellina">
+          <thead>
+            <tr><th>Motore</th><th>Costo</th><th>Quando conviene</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Agisoft Metashape Pro</b></td>
+              <td>Licenza a pagamento</td>
+              <td>Oggetti e reperti: dà la scala col tocco, l'unione di due riprese e i risultati migliori sulle superfici difficili.</td>
+            </tr>
+            <tr>
+              <td><b>WebODM (NodeODM)</b></td>
+              <td>Gratuito</td>
+              <td>Rilievi da drone e topografia, o computer senza licenza. Su Linux con scheda NVIDIA va molto veloce.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Metashape</h3>
+      <p>Installalo nella posizione predefinita: il server lo trova da solo (<code>/Applications</code> su Mac, <code>C:\Program Files\Agisoft</code> su Windows, <code>/opt/metashape-pro</code> su Linux).</p>
+
+      <h3>WebODM</h3>
+      <p>Installa <b>Docker Desktop</b> (gratuito), poi incolla questo comando una volta sola nel terminale:</p>
+      <pre><code><span class="p">$</span> docker run -d -p 3000:3000 --name nodeodm \
+      --restart unless-stopped opendronemap/nodeodm</code></pre>
+      <p>Da lì in poi il motore riparte da solo a ogni accensione. Con una scheda NVIDIA aggiungi <code>--gpus all</code>.</p>
+    </section>
+
+    <section class="passo" id="p3">
+      <div class="capo"><span class="num">03</span><h2>Installa l'app sul telefono</h2></div>
+      <ul>
+        <li><b>iPhone e iPad:</b> accetta l'invito che ricevi via mail, installa <b>TestFlight</b> dall'App Store e da lì installa Photo3D.</li>
+        <li><b>Android:</b> copia sul telefono il file <b>Photo3D.apk</b> e aprilo; Android chiederà una volta di consentire l'installazione da questa origine.</li>
+      </ul>
+      <p>Al primo avvio concedi <b>Fotocamera</b> e <b>Rete locale</b>: senza il permesso di rete locale l'app non vede il computer.</p>
+    </section>
+
+    <section class="passo" id="p4">
+      <div class="capo"><span class="num">04</span><h2>Collega l'app al server</h2></div>
+      <p>Telefono e computer devono stare sulla <b>stessa rete Wi-Fi</b>. Di norma non devi fare nulla: l'app trova il server da sola e lo mostra in cima alla schermata.</p>
+      <p>Se non lo trova (succede sulle reti di hotel e uffici, che bloccano la ricerca automatica):</p>
+      <ol class="elenco">
+        <li>Apri <b>Impostazioni</b> nell'app (l'ingranaggio) e scegli <b>Manuale</b>.</li>
+        <li>Inquadra il <b>QR</b> mostrato dalla finestra sul Mac, oppure scrivi l'indirizzo che il server stampa all'avvio (esempio: <code>172.16.13.84</code>) e la porta <code>8765</code>.</li>
+      </ol>
+    </section>
+
+    <section class="passo" id="p5">
+      <div class="capo"><span class="num">05</span><h2>Scatta le foto</h2></div>
+      <p>Premi <b>+</b>, dai un nome alla sessione, scegli la qualità e il motore, poi <b>Scatta foto</b>. Puoi anche importarle dalla galleria (le HEIC vengono convertite da sole).</p>
+      <ul>
+        <li>Gira attorno all'oggetto con uno scatto <b>ogni 10–15 gradi</b>: circa 30 foto per giro.</li>
+        <li>Ogni foto deve <b>sovrapporsi almeno al 60%</b> con la precedente.</li>
+        <li>Fai due o tre giri ad altezze diverse: dall'alto, di tre quarti, di lato.</li>
+        <li>Luce uniforme, niente ombre nette e niente flash. L'oggetto deve stare fermo.</li>
+        <li>Metti nell'inquadratura una <b>stecca metrica</b>: servirà per le misure reali.</li>
+      </ul>
+      <div class="nota">
+        <p><b>Lo zoom resta a 1×</b> per tutta la sessione, e non è un limite: la fotogrammetria richiede la stessa focale in ogni scatto. Per riempire l'inquadratura, avvicinati.</p>
+      </div>
+    </section>
+
+    <section class="passo" id="p6">
+      <div class="capo"><span class="num">06</span><h2>Isola l'oggetto (facoltativo)</h2></div>
+      <p>Serve quando vuoi <b>solo il reperto</b>, senza tavolo e sfondo. Nella scheda della sessione tocca una foto e poi <b>tocca l'oggetto</b>: il computer lo riconosce in tutte le altre foto e le mostra con un contorno giallo, così vedi subito cosa terrà.</p>
+      <div class="nota attenzione">
+        <p><b>Nei rilievi di scavo o da drone lascia perdere.</b> Lì l'oggetto è il terreno: senza tocco non viene fatta nessuna maschera, ed è giusto così.</p>
+      </div>
+    </section>
+
+    <section class="passo" id="p7">
+      <div class="capo"><span class="num">07</span><h2>Dai la misura reale</h2></div>
+      <p>Un modello senza riferimenti non ha dimensioni. Tre modi, nella sezione <b>Scala metrica</b> (con Metashape):</p>
+      <ol class="elenco">
+        <li><b>Tocca la barra su una foto</b> — scegli la foto dove la stecca si vede meglio, ingrandisci fino a 16×, tocca i due estremi e scrivi quanti millimetri sono. È il modo più preciso.</li>
+        <li><b>Trova la stecca da solo</b> — accendi l'interruttore e indica la lunghezza della stecca.</li>
+        <li><b>Target codificati</b> — se li stampi da Metashape, basta indicare la distanza fra due target.</li>
+      </ol>
+      <h3>Topografia: i punti di controllo (GCP)</h3>
+      <p>Per un rilievo in coordinate reali usa <b>Punti di controllo (GCP)</b>: scegli la foto, ingrandisci, tocca il punto a terra e scrivi Est, Nord e Quota. Funziona con entrambi i motori. Con le foto da drone la georeferenziazione avviene già col GPS.</p>
+    </section>
+
+    <section class="passo" id="p8">
+      <div class="capo"><span class="num">08</span><h2>Invia ed elabora</h2></div>
+      <p>Premi <b>Invia al Mac</b>. Il caricamento prosegue anche a schermo bloccato e riprende da dove si era interrotto. Finito l'invio, l'elaborazione parte da sola e nella stessa schermata vedi la fase e la percentuale.</p>
+      <p>Tempi indicativi: un reperto con 100 foto in qualità media richiede dai 20 ai 40 minuti; un volo di drone con 180 foto può arrivare a un'ora. Puoi chiudere l'app: il lavoro è sul computer.</p>
+    </section>
+
+    <section class="passo" id="p9">
+      <div class="capo"><span class="num">09</span><h2>Guarda il modello e prendi le misure</h2></div>
+      <p>A lavoro finito compare <b>Vedi modello 3D</b>: il modello si gira con le dita e lo sfondo si cambia col selettore colore. La prima apertura scarica il modello (con la barra di avanzamento); dopo è immediato.</p>
+      <h3>Sezioni e profili</h3>
+      <ol class="elenco">
+        <li>Tocca l'icona <b>forbici</b>.</li>
+        <li>Gira il modello finché lo vedi come vuoi disegnarlo, poi <b>tocca due punti</b>.</li>
+        <li>Scegli il taglio: <b>Come lo vedo</b> per il profilo di un vaso o di un coccio; <b>Lungo la linea</b> per la sezione di un terreno.</li>
+      </ol>
+      <p>La sezione riporta larghezza, altezza e lunghezza della linea (il righello in alto le accende e le spegne). Con <b>Aggiungi alla tavola</b> ogni sezione prende una lettera — A–A1, B–B1 — che compare anche <b>sul modello</b>, dove hai tagliato; la tavola si riordina e si condivide come un'unica immagine.</p>
+    </section>
+
+    <section class="passo" id="p10">
+      <div class="capo"><span class="num">10</span><h2>Unisci due riprese dello stesso oggetto</h2></div>
+      <p>Per avere anche il fondo, fotografa l'oggetto in due posizioni (dritto e capovolto) come due sessioni separate, elaborale entrambe, poi in una delle due tocca <b>Unisci con un'altra sessione…</b>.</p>
+      <ul>
+        <li><b>Allinea le posizioni</b> (consigliato): funziona anche su superfici scure e uniformi.</li>
+        <li><b>Solo maschere</b>: per oggetti molto ricchi di dettagli.</li>
+      </ul>
+      <p>Nasce una nuova sessione con tutte le foto e un modello unico. Se le due metà non si agganciano, l'app te lo dice invece di consegnare un risultato sbagliato: servono più foto di raccordo che inquadrino le stesse zone in entrambe le posizioni.</p>
+    </section>
+
+    <section class="passo" id="p11">
+      <div class="capo"><span class="num">11</span><h2>Condividi il risultato</h2></div>
+      <ul>
+        <li><b>Condividi modello (OBJ)</b>: un pacchetto zip con geometria e texture, apribile in Blender, MeshLab, CloudCompare.</li>
+        <li><b>Sezioni e tavole</b>: immagini pronte per la relazione.</li>
+        <li>Sul computer, nella cartella della sessione, trovi anche la <b>nuvola di punti</b> (<code>.ply</code> o <code>.laz</code> georeferenziata) per QGIS e CloudCompare.</li>
+      </ul>
+      <p>Le sessioni fatte da altri dispositivi si aprono dall'icona <b>disco con onde</b> nella lista: mostra tutte le elaborazioni presenti sul computer e con un tocco le porta anche sul tuo telefono.</p>
+    </section>
+
+    <section class="passo" id="p12">
+      <div class="capo"><span class="num">12</span><h2>Lavorare da fuori casa</h2></div>
+      <p>In rete locale non serve altro. Per usare l'app da un'altra rete o in 4G, il computer apre un collegamento sicuro (HTTPS) e l'app usa una parola d'ordine, il <b>token</b>.</p>
+
+      <div class="schede">
+        <div class="linguette" role="tablist" aria-label="Sistema del computer per il collegamento esterno">
+          <button role="tab" id="t2-mac" aria-controls="s2-mac" aria-selected="true">macOS · Linux</button>
+          <button role="tab" id="t2-win" aria-controls="s2-win" aria-selected="false">Windows</button>
+        </div>
+        <div class="pannello" role="tabpanel" id="s2-mac" aria-labelledby="t2-mac">
+          <pre><code><span class="p">$</span> scripts/tunnel.sh</code></pre>
+          <p>Stampa un indirizzo <code>https://…trycloudflare.com</code> e il token. Per un indirizzo che non cambia mai: <code>scripts/tailscale.sh</code> (serve un account Tailscale gratuito).</p>
+        </div>
+        <div class="pannello" role="tabpanel" id="s2-win" aria-labelledby="t2-win" hidden>
+          <p>Tasto destro su <b>tunnel.ps1</b> → <i>Esegui con PowerShell</i>. Scarica da solo quello che serve e stampa indirizzo e token.</p>
+        </div>
+      </div>
+
+      <p>Nell'app: <b>Impostazioni → Manuale</b>, incolla l'indirizzo <code>https://…</code> nel campo indirizzo e il token nel campo <b>Token</b>.</p>
+      <div class="nota attenzione">
+        <p><b>Il token vale sempre.</b> Una volta creato, il server rifiuta le richieste che non lo portano, anche in casa: mettilo nell'app su tutti i dispositivi che usi.</p>
+      </div>
+    </section>
+
+    <section class="passo" id="guasti">
+      <div class="capo"><span class="num">SOS</span><h2>Se qualcosa non va</h2></div>
+      <p>I casi che capitano davvero, con il rimedio in una riga.</p>
+
+      <div class="guasti">
+        <div class="guasto">
+          <p class="sintomo">"Nessun Mac trovato sulla rete"</p>
+          <p class="rimedio"><strong>Controlla nell'ordine:</strong> il telefono è in Wi-Fi e non in 4G; il permesso <b>Rete locale</b> è acceso nelle impostazioni del telefono; il server è avviato. Se resta così, la rete blocca la ricerca automatica: metti l'indirizzo a mano (Impostazioni → Manuale).</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">L'app trovava il server, ora dà errore 401</p>
+          <p class="rimedio">È stato creato un <strong>token</strong>. Copialo dal computer (file <code>.photo3d_token</code> nella tua cartella utente) e incollalo in Impostazioni → Token.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">Il caricamento delle foto è lentissimo</p>
+          <p class="rimedio">Colpa della Wi-Fi condivisa. Usa l'<strong>hotspot del telefono</strong> collegando il computer alla rete del telefono, oppure il cavo. L'invio prosegue anche a schermo bloccato: lascialo lavorare.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">L'elaborazione fallisce: "poche foto allineate"</p>
+          <p class="rimedio">Le foto non si legano tra loro. <strong>Rifai gli scatti</strong> più ravvicinati (ogni 10–15°), con luce costante, senza sfocature e senza cambiare zoom. Superfici lucide, nere o senza dettaglio sono le più difficili: opacizzale o aggiungi riferimenti attorno.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">Il contorno giallo prende anche pezzi di sfondo</p>
+          <p class="rimedio">Tocca l'oggetto su una foto <strong>più chiara e ravvicinata</strong>: quel tocco è il riferimento per tutte le altre. Se il rilievo è un terreno, spegni del tutto le maschere.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">Le misure della sezione sembrano sbagliate (0,99 · 1,00…)</p>
+          <p class="rimedio">Il modello non è in scala: quei numeri sono unità arbitrarie. Imposta la <strong>scala metrica</strong> e rilancia l'elaborazione con <b>Applica la scala</b>.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">Il profilo del vaso esce come un anello</p>
+          <p class="rimedio">Stai guardando il pezzo <strong>dall'alto</strong>: il taglio passa per il diametro. Gira il modello di lato (orlo in alto), tocca i due estremi della sagoma e usa <b>Come lo vedo</b>.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">"Le due posizioni non si agganciano"</p>
+          <p class="rimedio">Le due riprese non hanno abbastanza zone in comune. Aggiungi <strong>foto di raccordo</strong> che inquadrino le stesse parti dell'oggetto in entrambe le posizioni, e riprova con <b>Allinea le posizioni</b>.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">Con WebODM non parte niente</p>
+          <p class="rimedio">Il motore non è acceso. Apri <strong>Docker Desktop</strong> e verifica che il contenitore <code>nodeodm</code> sia in esecuzione; se manca, rilancia il comando del passo 02.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">Il modello nel visore sembra un'immagine ferma</p>
+          <p class="rimedio">Trascina con <strong>un dito</strong> per ruotare e usa due dita per lo zoom; se hai attivato le forbici, il primo tocco piazza un punto invece di girare. Tocca di nuovo le forbici per uscire.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">macOS: "app di sviluppatore non identificato"</p>
+          <p class="rimedio">Stai aprendo una copia vecchia. Usa il <strong>DMG firmato</strong> e trascina l'app in Applicazioni: quello si apre senza avvisi.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">Linux: il servizio non parte</p>
+          <p class="rimedio">Guarda il motivo con <code>journalctl -u photo3d -f</code>. Quasi sempre è la porta occupata da un altro server già avviato.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Photo3D · app iOS e Android, server per macOS, Windows e Linux, motore Metashape o WebODM.
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('[role="tablist"]').forEach(function (lista) {
+    var linguette = Array.prototype.slice.call(lista.querySelectorAll('[role="tab"]'));
+    linguette.forEach(function (linguetta) {
+      linguetta.addEventListener('click', function () {
+        linguette.forEach(function (altra) {
+          var scelta = altra === linguetta;
+          altra.setAttribute('aria-selected', scelta ? 'true' : 'false');
+          var pannello = document.getElementById(altra.getAttribute('aria-controls'));
+          if (pannello) { pannello.hidden = !scelta; }
+        });
+      });
+    });
+  });
+</script>
