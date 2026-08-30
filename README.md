@@ -89,6 +89,14 @@ scegliere l'intera cartella `DCIM`, senza passare dal rullino. Photo3D non coman
 si fa con l'app del produttore (alcuni DJI — Mini 3/4 Pro e linea Enterprise — sarebbero pilotabili
 da app di terze parti col Mobile SDK v5, ma solo su Android e col telefono collegato al telecomando).
 
+**Volo con l'app Android.** Con un telefono Android collegato al telecomando puoi far volare i
+droni DJI supportati da Photo3D: sessione → **Drone** → mappa satellitare con l'area del rilievo.
+La griglia si sposta trascinando la mappa, si ridimensiona col cursore e si può ruotare; l'app
+mostra scatti e minuti di volo, poi **Prepara il volo → Decolla**. Il piano è **facoltativo**:
+puoi volare a mano con DJI Fly e poi usare **Riprendi le foto dal drone**, che scarica la scheda
+dentro la sessione. Su iPhone/iPad il pilotaggio non è possibile (niente SDK v5 per iOS): si
+importa dalla scheda con *Aggiungi da File o scheda SD*.
+
 > **Lo zoom resta a 1×** per tutta la sessione: la fotogrammetria richiede la stessa focale in
 > ogni scatto. Per riempire l'inquadratura, avvicinati.
 
