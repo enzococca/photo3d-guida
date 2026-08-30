@@ -151,17 +151,31 @@ Le sessioni fatte da altri dispositivi si aprono dall'icona **disco con onde** n
 In rete locale non serve altro. Da un'altra rete o in 4G il computer apre un collegamento
 sicuro (HTTPS) e l'app usa una parola d'ordine, il **token**.
 
+**Sul Mac**, nella finestra di Photo3D Server, sezione **Accesso da fuori casa**:
+
+1. accendi **Chiedi una parola d'ordine (token)** — viene creata al momento e mostrata col
+   bottone per copiarla (riavvia il server perché la applichi);
+2. scegli **Cloudflare (subito)** o **Tailscale (indirizzo fisso)** e premi **Apri al pubblico**;
+3. quando compare l'indirizzo `https://…` col lucchetto verde sei online; **Chiudi** lo spegne.
+
+Il **QR** della finestra si aggiorna da solo: inquadrandolo, l'app riceve insieme indirizzo
+pubblico e parola d'ordine.
+
+**Su Windows e Linux**:
+
 ```bash
-scripts/tunnel.sh        # macOS e Linux: stampa indirizzo https://… e token
-scripts/tailscale.sh     # indirizzo che non cambia mai (account Tailscale gratuito)
+scripts/tunnel.sh        # Linux e macOS: indirizzo + parola d'ordine
+scripts/tailscale.sh     # indirizzo che non cambia mai
 ```
 
-Su Windows: tasto destro su `tunnel.ps1` → *Esegui con PowerShell*.
+Su Windows: tasto destro su `tunnel.ps1` → *Esegui con PowerShell* (solo la parola d'ordine:
+`genera-token.ps1`).
 
-Nell'app: **Impostazioni → Manuale**, indirizzo `https://…` e token nel campo **Token**.
+Nell'app: **Impostazioni → Manuale**, indirizzo `https://…` e parola d'ordine nel campo
+**Token** — oppure inquadra il QR.
 
-> **Il token vale sempre.** Una volta creato, il server rifiuta le richieste che non lo
-> portano, anche in rete locale: mettilo nell'app su tutti i dispositivi.
+> **La parola d'ordine vale sempre.** Finché è accesa il server rifiuta le richieste che non la
+> portano, anche in casa: mettila su tutti i dispositivi, o spegnila mentre lavori in locale.
 
 ---
 
@@ -170,7 +184,7 @@ Nell'app: **Impostazioni → Manuale**, indirizzo `https://…` e token nel camp
 | Sintomo | Rimedio |
 |---|---|
 | "Nessun Mac trovato sulla rete" | Controlla: telefono in Wi-Fi (non 4G), permesso **Rete locale** acceso, server avviato. Se resta così, la rete blocca la ricerca automatica: indirizzo a mano in Impostazioni → Manuale |
-| Errore 401 dove prima funzionava | È stato creato un **token**: copialo dal file `.photo3d_token` nella cartella utente e incollalo in Impostazioni → Token |
+| Errore 401 dove prima funzionava | È accesa la **parola d'ordine**: inquadra di nuovo il QR (la porta con sé) o copiala dalla sezione *Accesso da fuori casa*. Se il telefono ha una versione vecchia dell'app, aggiornala o spegni l'interruttore mentre lavori in casa |
 | Caricamento lentissimo | Wi-Fi condivisa: usa l'**hotspot del telefono** col computer collegato ad esso, o il cavo. L'invio prosegue a schermo bloccato |
 | "Poche foto allineate" | Le foto non si legano: scatti più ravvicinati (10–15°), luce costante, niente sfocature né zoom. Superfici lucide, nere o senza dettaglio sono le più difficili |
 | Il contorno giallo prende lo sfondo | Tocca l'oggetto su una foto **più chiara e ravvicinata**: quel tocco è il riferimento per tutte. Sui terreni, spegni le maschere |
@@ -180,4 +194,5 @@ Nell'app: **Impostazioni → Manuale**, indirizzo `https://…` e token nel camp
 | Con WebODM non parte niente | Apri **Docker Desktop** e verifica che il contenitore `nodeodm` sia in esecuzione; se manca, rilancia il comando del passo 2 |
 | Il modello sembra un'immagine ferma | Trascina con **un dito** per ruotare, due dita per lo zoom. Con le forbici attive il primo tocco piazza un punto: toccale di nuovo per uscire |
 | macOS: "sviluppatore non identificato" | Stai aprendo una copia vecchia: usa il **DMG firmato** e trascina l'app in Applicazioni |
+| macOS: premo Avvia e il server non parte | Se salvi su un **disco esterno**, autorizza l'app: Impostazioni di Sistema → **Privacy e sicurezza → File e cartelle** → attiva **Photo3DServer** (serve dopo ogni aggiornamento) |
 | Linux: il servizio non parte | `journalctl -u photo3d -f` — quasi sempre è la porta occupata da un altro server già avviato |

@@ -443,7 +443,7 @@
       <p>Se non lo trova (succede sulle reti di hotel e uffici, che bloccano la ricerca automatica):</p>
       <ol class="elenco">
         <li>Apri <b>Impostazioni</b> nell'app (l'ingranaggio) e scegli <b>Manuale</b>.</li>
-        <li>Inquadra il <b>QR</b> mostrato dalla finestra sul Mac, oppure scrivi l'indirizzo che il server stampa all'avvio (esempio: <code>172.16.13.84</code>) e la porta <code>8765</code>.</li>
+        <li>Inquadra il <b>QR</b> mostrato dalla finestra sul Mac: porta con sé indirizzo, porta e — se l'hai attivata — la parola d'ordine. In alternativa scrivi a mano l'indirizzo che il server mostra all'avvio (esempio: <code>172.16.13.84</code>) e la porta <code>8765</code>.</li>
       </ol>
     </section>
 
@@ -524,23 +524,33 @@
       <div class="capo"><span class="num">12</span><h2>Lavorare da fuori casa</h2></div>
       <p>In rete locale non serve altro. Per usare l'app da un'altra rete o in 4G, il computer apre un collegamento sicuro (HTTPS) e l'app usa una parola d'ordine, il <b>token</b>.</p>
 
+      <h3>Sul Mac: due interruttori</h3>
+      <p>Nella finestra di Photo3D Server, sezione <b>Accesso da fuori casa</b>:</p>
+      <ol class="elenco">
+        <li>Accendi <b>Chiedi una parola d'ordine (token)</b>: viene creata sul momento e mostrata accanto, col bottone per copiarla. Riavvia il server perché la applichi.</li>
+        <li>Scegli <b>Cloudflare (subito)</b> — nessun account, indirizzo nuovo a ogni avvio — oppure <b>Tailscale (indirizzo fisso)</b>, e premi <b>Apri al pubblico</b>.</li>
+        <li>Quando compare l'indirizzo <code>https://…</code> col lucchetto verde, sei online. <b>Chiudi</b> lo spegne.</li>
+      </ol>
+      <p>Il <b>QR</b> nella finestra si aggiorna da solo: inquadrandolo, l'app riceve insieme l'indirizzo pubblico e la parola d'ordine.</p>
+
+      <h3>Su Windows e Linux: un comando</h3>
       <div class="schede">
         <div class="linguette" role="tablist" aria-label="Sistema del computer per il collegamento esterno">
-          <button role="tab" id="t2-mac" aria-controls="s2-mac" aria-selected="true">macOS · Linux</button>
+          <button role="tab" id="t2-lin" aria-controls="s2-lin" aria-selected="true">Linux</button>
           <button role="tab" id="t2-win" aria-controls="s2-win" aria-selected="false">Windows</button>
         </div>
-        <div class="pannello" role="tabpanel" id="s2-mac" aria-labelledby="t2-mac">
-          <pre><code><span class="p">$</span> scripts/tunnel.sh</code></pre>
-          <p>Stampa un indirizzo <code>https://…trycloudflare.com</code> e il token. Per un indirizzo che non cambia mai: <code>scripts/tailscale.sh</code> (serve un account Tailscale gratuito).</p>
+        <div class="pannello" role="tabpanel" id="s2-lin" aria-labelledby="t2-lin">
+          <pre><code><span class="p">$</span> scripts/tunnel.sh        <span class="c"># stampa indirizzo e parola d'ordine</span>
+<span class="p">$</span> scripts/tailscale.sh     <span class="c"># indirizzo che non cambia mai</span></code></pre>
         </div>
         <div class="pannello" role="tabpanel" id="s2-win" aria-labelledby="t2-win" hidden>
-          <p>Tasto destro su <b>tunnel.ps1</b> → <i>Esegui con PowerShell</i>. Scarica da solo quello che serve e stampa indirizzo e token.</p>
+          <p>Tasto destro su <b>tunnel.ps1</b> → <i>Esegui con PowerShell</i>: scarica da solo quello che serve e stampa indirizzo e parola d'ordine. Per la sola parola d'ordine: <b>genera-token.ps1</b>.</p>
         </div>
       </div>
 
-      <p>Nell'app: <b>Impostazioni → Manuale</b>, incolla l'indirizzo <code>https://…</code> nel campo indirizzo e il token nel campo <b>Token</b>.</p>
+      <p>Nell'app: <b>Impostazioni → Manuale</b>, indirizzo <code>https://…</code> e parola d'ordine nel campo <b>Token</b> — oppure, più semplice, inquadra il QR.</p>
       <div class="nota attenzione">
-        <p><b>Il token vale sempre.</b> Una volta creato, il server rifiuta le richieste che non lo portano, anche in casa: mettilo nell'app su tutti i dispositivi che usi.</p>
+        <p><b>La parola d'ordine vale sempre.</b> Finché è accesa, il server rifiuta le richieste che non la portano, anche in casa: mettila su tutti i dispositivi che usi, o spegnila dallo stesso interruttore quando lavori solo in locale.</p>
       </div>
     </section>
 
@@ -555,7 +565,7 @@
         </div>
         <div class="guasto">
           <p class="sintomo">L'app trovava il server, ora dà errore 401</p>
-          <p class="rimedio">È stato creato un <strong>token</strong>. Copialo dal computer (file <code>.photo3d_token</code> nella tua cartella utente) e incollalo in Impostazioni → Token.</p>
+          <p class="rimedio">È accesa la <strong>parola d'ordine</strong>. Inquadra di nuovo il QR dalla finestra del Mac (la porta con sé), oppure copiala dalla sezione <b>Accesso da fuori casa</b> e incollala in Impostazioni → Token. Se il telefono ha una versione vecchia dell'app che non ha quel campo, aggiornala oppure spegni l'interruttore mentre lavori in casa.</p>
         </div>
         <div class="guasto">
           <p class="sintomo">Il caricamento delle foto è lentissimo</p>
@@ -592,6 +602,10 @@
         <div class="guasto">
           <p class="sintomo">macOS: "app di sviluppatore non identificato"</p>
           <p class="rimedio">Stai aprendo una copia vecchia. Usa il <strong>DMG firmato</strong> e trascina l'app in Applicazioni: quello si apre senza avvisi.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">macOS: premo Avvia e il server non parte</p>
+          <p class="rimedio">Se salvi su un <strong>disco esterno</strong>, macOS deve autorizzare l'app: Impostazioni di Sistema → <b>Privacy e sicurezza → File e cartelle</b> (o <i>Unità esterne</i>) → attiva <b>Photo3DServer</b>. Succede dopo ogni aggiornamento dell'app.</p>
         </div>
         <div class="guasto">
           <p class="sintomo">Linux: il servizio non parte</p>
