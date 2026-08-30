@@ -157,6 +157,10 @@ al quadrato col cursore.
 
 ![Area disegnata a mano](img/drone-poligono.jpg)
 
+> **Area disegnata e rotazione lavorano insieme.** Ruotando la direzione delle strisciate l'area
+> resta quella disegnata: ruotano solo le passate interne, e scatti, minuti e percorso si
+> ricalcolano. Su una trincea stretta conviene provare entrambi i versi.
+
 ### Quota, sovrapposizioni e minuti di volo
 
 ![Parametri e stima del volo](img/drone-parametri.jpg)
