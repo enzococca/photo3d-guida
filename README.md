@@ -83,10 +83,11 @@ galleria: le HEIC vengono convertite da sole).
 - Luce uniforme, niente ombre nette né flash; l'oggetto sta fermo.
 - Metti in campo una **stecca metrica**: servirà per le misure.
 
-**Foto da drone.** I droni di consumo (es. DJI Mini 4 Pro) non si comandano da app esterne:
-vola con DJI Fly usando i **waypoint** con scatto a intervallo, poi porta le foto sul tablet
-(Quick Transfer o lettore di schede) e usa **Aggiungi da File o scheda SD**: si può scegliere
-l'intera cartella `DCIM`, senza passare dal rullino.
+**Foto da drone.** Vola con DJI Fly usando i **waypoint** con scatto a intervallo, poi porta le
+foto sul tablet (Quick Transfer o lettore di schede) e usa **Aggiungi da File o scheda SD**: si può
+scegliere l'intera cartella `DCIM`, senza passare dal rullino. Photo3D non comanda il drone: il volo
+si fa con l'app del produttore (alcuni DJI — Mini 3/4 Pro e linea Enterprise — sarebbero pilotabili
+da app di terze parti col Mobile SDK v5, ma solo su Android e col telefono collegato al telecomando).
 
 > **Lo zoom resta a 1×** per tutta la sessione: la fotogrammetria richiede la stessa focale in
 > ogni scatto. Per riempire l'inquadratura, avvicinati.
