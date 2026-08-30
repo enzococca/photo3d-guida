@@ -148,6 +148,15 @@ drone collegato.
 
 ![Griglia ruotata a 45 gradi](img/drone-griglia-ruotata.jpg)
 
+### Disegnare l'area a mano
+
+Se il sito non è un quadrato (trincea stretta, saggio irregolare, spiaggia) tocca **Disegna l'area**
+e poi gli **angoli sulla mappa**: la griglia riempie solo quello che hai racchiuso. **Togli punto**
+corregge l'ultimo tocco, **Fine** chiude il poligono (minimo tre angoli), **Cancella l'area** torna
+al quadrato col cursore.
+
+![Area disegnata a mano](img/drone-poligono.jpg)
+
 ### Quota, sovrapposizioni e minuti di volo
 
 ![Parametri e stima del volo](img/drone-parametri.jpg)
