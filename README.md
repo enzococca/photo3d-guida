@@ -89,18 +89,30 @@ scegliere l'intera cartella `DCIM`, senza passare dal rullino. Photo3D non coman
 si fa con l'app del produttore (alcuni DJI — Mini 3/4 Pro e linea Enterprise — sarebbero pilotabili
 da app di terze parti col Mobile SDK v5, ma solo su Android e col telefono collegato al telecomando).
 
-**Volo con l'app Android.** Con un telefono Android collegato al telecomando puoi far volare i
-droni DJI supportati da Photo3D: sessione → **Drone** → mappa satellitare con l'area del rilievo.
-La griglia si sposta trascinando la mappa, si ridimensiona col cursore e si può ruotare; l'app
-mostra scatti e minuti di volo, poi **Prepara il volo → Decolla**. Il piano è **facoltativo**:
-puoi volare a mano con DJI Fly e poi usare **Riprendi le foto dal drone**, che scarica la scheda
-dentro la sessione. Su iPhone/iPad il pilotaggio non è possibile (niente SDK v5 per iOS): si
-importa dalla scheda con *Aggiungi da File o scheda SD*.
-
 > **Lo zoom resta a 1×** per tutta la sessione: la fotogrammetria richiede la stessa focale in
 > ogni scatto. Per riempire l'inquadratura, avvicinati.
 
 ![Sessione in elaborazione](img/elabora.jpg)
+
+## 5b. Volare col drone (app Android)
+
+Con un telefono **Android** collegato al telecomando, Photo3D pilota i droni DJI supportati
+(Mini 3, Mini 3 Pro, **Mini 4 Pro**, Mavic 3 Enterprise, Matrice). Sessione → **Drone**.
+
+![La schermata Drone con mappa satellitare e griglia](img/drone-mappa.jpg)
+
+1. Trascina la **mappa** finché il sito è al centro: la griglia lo segue (satellite o mappa col
+   pulsante in alto).
+2. Regola l'**area** e la **direzione delle strisciate**, poi quota e sovrapposizioni (80% avanti,
+   65% laterale vanno bene quasi sempre).
+3. L'app mostra **scatti** e **minuti** di volo: se superano una batteria, riduci l'area o alza la quota.
+4. **Prepara il volo** → **Decolla** → (**Ferma** per interrompere).
+
+**Oppure vola come vuoi**: il piano è facoltativo. Vola a mano con DJI Fly, poi in Photo3D usa
+**Riprendi le foto dal drone** per scaricare la scheda dentro la sessione.
+
+> Su iPhone e iPad il pilotaggio non è possibile: DJI pubblica il Mobile SDK v5 solo per Android.
+> Lì si vola con DJI Fly e si importa con *Aggiungi da File o scheda SD*.
 
 ## 6. Isola l'oggetto (facoltativo)
 
