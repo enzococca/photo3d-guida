@@ -6,7 +6,7 @@ serve saper usare il terminale: dove c'è un comando, si copia e si incolla.
 
 > App (iPhone · iPad · Android) → Server (Mac · Windows · Linux) → Motore (Metashape · WebODM) → Modello 3D
 
-Versione impaginata: [`docs/guida.html`](guida.html) (scaricala e aprila nel browser).
+Versione impaginata: [italiano](https://enzococca.github.io/photo3d-guida/) · [English](https://enzococca.github.io/photo3d-guida/en.html) (scaricala e aprila nel browser).
 
 ---
 
@@ -98,6 +98,28 @@ da app di terze parti col Mobile SDK v5, ma solo su Android e col telefono colle
 
 Con un telefono **Android** Photo3D pilota i droni DJI supportati dal Mobile SDK v5: Mini 3,
 Mini 3 Pro, **Mini 4 Pro**, Mavic 3 Enterprise / 3T / 3M, Matrice 30, 4E/4T, 300 e 350.
+
+### Quali droni
+
+Photo3D usa il **Mobile SDK v5** di DJI, l'unico modo per far pilotare un drone da un'app di terze
+parti. Modelli supportati:
+
+| Modello | Tipo | Note per il rilievo |
+|---|---|---|
+| DJI Mini 3 | Consumer | Leggero, sotto i 250 g |
+| DJI Mini 3 Pro | Consumer | Sensore 1/1.3", buon dettaglio |
+| **DJI Mini 4 Pro** | Consumer | Il più conveniente per lo scavo |
+| DJI Mavic 3 Enterprise (3E) | Enterprise | Sensore 4/3, otturatore meccanico, RTK opzionale |
+| DJI Mavic 3 Thermal (3T) | Enterprise | Termica + grandangolo |
+| DJI Mavic 3 Multispectral (3M) | Enterprise | Multispettrale |
+| DJI Matrice 30 / 30T | Enterprise | Robusto, vento e pioggia |
+| DJI Matrice 4E / 4T | Enterprise | Generazione recente per mappatura |
+| DJI Matrice 4D / 4TD | Enterprise / Dock | Voli automatici da stazione |
+| DJI Matrice 300 / 350 RTK | Enterprise | Camere intercambiabili (P1, H20) |
+| DJI Matrice 400 | Enterprise | Il più grande della serie |
+
+> **Non tutti i DJI recenti sono pilotabili da app esterne**: restano fuori Air 3 e Air 3S,
+> Mavic 4 Pro, Mini 5 Pro, Neo, Flip e Avata 2, e i telecomandi con schermo integrato (RC 2, RC Pro).
 
 ### Collegare il telefono al telecomando
 
