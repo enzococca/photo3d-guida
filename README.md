@@ -83,6 +83,11 @@ galleria: le HEIC vengono convertite da sole).
 - Luce uniforme, niente ombre nette né flash; l'oggetto sta fermo.
 - Metti in campo una **stecca metrica**: servirà per le misure.
 
+**Foto da drone.** I droni di consumo (es. DJI Mini 4 Pro) non si comandano da app esterne:
+vola con DJI Fly usando i **waypoint** con scatto a intervallo, poi porta le foto sul tablet
+(Quick Transfer o lettore di schede) e usa **Aggiungi da File o scheda SD**: si può scegliere
+l'intera cartella `DCIM`, senza passare dal rullino.
+
 > **Lo zoom resta a 1×** per tutta la sessione: la fotogrammetria richiede la stessa focale in
 > ogni scatto. Per riempire l'inquadratura, avvicinati.
 
