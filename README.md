@@ -96,23 +96,71 @@ da app di terze parti col Mobile SDK v5, ma solo su Android e col telefono colle
 
 ## 5b. Volare col drone (app Android)
 
-Con un telefono **Android** collegato al telecomando, Photo3D pilota i droni DJI supportati
-(Mini 3, Mini 3 Pro, **Mini 4 Pro**, Mavic 3 Enterprise, Matrice). Sessione → **Drone**.
+Con un telefono **Android** Photo3D pilota i droni DJI supportati dal Mobile SDK v5: Mini 3,
+Mini 3 Pro, **Mini 4 Pro**, Mavic 3 Enterprise / 3T / 3M, Matrice 30, 4E/4T, 300 e 350.
 
-![La schermata Drone con mappa satellitare e griglia](img/drone-mappa.jpg)
+### Collegare il telefono al telecomando
 
-1. Trascina la **mappa** finché il sito è al centro: la griglia lo segue (satellite o mappa col
-   pulsante in alto).
-2. Regola l'**area** e la **direzione delle strisciate**, poi quota e sovrapposizioni (80% avanti,
-   65% laterale vanno bene quasi sempre).
-3. L'app mostra **scatti** e **minuti** di volo: se superano una batteria, riduci l'area o alza la quota.
-4. **Prepara il volo** → **Decolla** → (**Ferma** per interrompere).
+Il telefono parla col **telecomando**, non col drone: serve il cavo, non il Wi-Fi.
 
-**Oppure vola come vuoi**: il piano è facoltativo. Vola a mano con DJI Fly, poi in Photo3D usa
-**Riprendi le foto dal drone** per scaricare la scheda dentro la sessione.
+1. Metti il telefono nella pinza del telecomando (RC-N2 per il Mini 4 Pro; sui telecomandi con
+   schermo integrato, tipo RC 2, non si possono installare app di terze parti).
+2. Collega il **cavo dati USB-C ↔ USB-C** di DJI. Dev'essere un cavo **dati**: quelli da sola
+   ricarica non funzionano e non danno alcun errore.
+3. Accendi prima il **telecomando**, poi il **drone**, e aspetta l'aggancio.
+4. **Chiudi DJI Fly**: due app non possono usare il telecomando insieme.
+5. Apri Photo3D → sessione → **Drone**; alla richiesta di accesso al dispositivo USB rispondi **OK**.
 
-> Su iPhone e iPad il pilotaggio non è possibile: DJI pubblica il Mobile SDK v5 solo per Android.
-> Lì si vola con DJI Fly e si importa con *Aggiungi da File o scheda SD*.
+In cima alla schermata leggi lo stato: *Registrazione con DJI…*, poi **modello e batteria** del
+drone collegato.
+
+### Disegnare l'area
+
+![Mappa satellitare con la griglia di volo](img/drone-mappa.jpg)
+
+- **Spostare**: trascina la mappa, la griglia resta al centro (la spunta la tiene agganciata).
+- **Ingrandire/rimpicciolire**: cursore **Area**, da 20 a 300 m di lato.
+- **Ruotare**: cursore **Direzione delle strisciate** (0–90°): allineale al lato lungo dello scavo,
+  meno virate e copertura più regolare.
+- **Satellite o mappa**: pulsante in alto a destra.
+
+![Griglia ruotata a 45 gradi](img/drone-griglia-ruotata.jpg)
+
+### Quota, sovrapposizioni e minuti di volo
+
+![Parametri e stima del volo](img/drone-parametri.jpg)
+
+La **quota** decide tutto: raddoppiandola ogni foto copre il doppio di terreno, gli scatti calano
+in fretta ma cala anche il dettaglio. Le **sovrapposizioni** consigliate sono 80% avanti e 65%
+laterale.
+
+| Area | Quota | Impronta | Scatti | Volo | Dettaglio |
+|---|---|---|---|---|---|
+| 50×50 m | 30 m | 45 m | 24 | ~2 min | ~0,6 cm/px |
+| 100×100 m | 30 m | 45 m | 84 | ~4 min | ~0,6 cm/px |
+| 100×100 m | 50 m | 75 m | 28 | ~3 min | ~0,9 cm/px |
+| 150×150 m | 30 m | 45 m | 170 | ~7 min | ~0,6 cm/px |
+| 150×150 m | 50 m | 75 m | 66 | ~5 min | ~0,9 cm/px |
+| 200×200 m | 30 m | 45 m | 299 | ~12 min | ~0,6 cm/px |
+| 200×200 m | 50 m | 75 m | 112 | ~8 min | ~0,9 cm/px |
+
+Una batteria dura circa **15–20 minuti reali**: resta sotto i 10 di volo pianificato. Per un'area
+di scavo, **30–40 m di quota** danno meno di un centimetro per pixel.
+
+### Far volare
+
+1. **Prepara il volo** — la missione viene generata e caricata sul drone.
+2. **Decolla** — il drone vola la griglia scattando e poi rientra da solo.
+3. **Ferma** — interrompe; i comandi del telecomando restano sempre prioritari.
+
+### Oppure vola come vuoi
+
+Il piano è facoltativo: vola a mano con DJI Fly (utile per pareti di taglio e strutture verticali),
+poi chiudi DJI Fly, apri Photo3D e usa **Riprendi le foto dal drone**.
+
+> Su iPhone e iPad il pilotaggio non è possibile: DJI pubblica il Mobile SDK v5 solo per Android
+> (per iOS resta la v4, ferma al 2022). Su iPad si vola con DJI Fly e si importa con
+> *Aggiungi da File o scheda SD*.
 
 ## 6. Isola l'oggetto (facoltativo)
 
