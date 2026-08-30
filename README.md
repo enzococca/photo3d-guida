@@ -15,6 +15,8 @@ Versione impaginata: [`docs/guida.html`](guida.html) (scaricala e aprila nel bro
 Il server riceve le foto e comanda l'elaborazione. Si installa una volta sola, sul computer
 che farà i calcoli.
 
+![La finestra su Mac](img/finestra-mac.jpg)
+
 **macOS** — apri `Photo3DServer.dmg`, trascina **Photo3D Server** su **Applicazioni**, aprila
 dal Launchpad e premi **Avvia**. La finestra mostra il semaforo di stato, la cartella di
 salvataggio e un **QR** per l'app.
@@ -22,6 +24,8 @@ salvataggio e un **QR** per l'app.
 **Windows** — scompatta `Photo3DServer-Windows.zip` e fai doppio click su `photo3d-server.exe`
 (oppure tasto destro su `avvia-server.ps1` → *Esegui con PowerShell*). Alla richiesta di
 Windows sulla rete, scegli **Consenti** sulle reti private.
+
+![La finestra su Windows e Linux](img/finestra-linux.jpg)
 
 **Linux**
 
@@ -82,10 +86,14 @@ galleria: le HEIC vengono convertite da sole).
 > **Lo zoom resta a 1×** per tutta la sessione: la fotogrammetria richiede la stessa focale in
 > ogni scatto. Per riempire l'inquadratura, avvicinati.
 
+![Sessione in elaborazione](img/elabora.jpg)
+
 ## 6. Isola l'oggetto (facoltativo)
 
 Quando vuoi **solo il reperto**, senza tavolo e sfondo: apri una foto e **tocca l'oggetto**.
 Il computer lo riconosce nelle altre foto e le mostra con un contorno giallo.
+
+![Contorni delle maschere](img/maschere.jpg)
 
 > Nei rilievi di scavo o da drone **non serve**: lì l'oggetto è il terreno. Senza tocco non
 > viene fatta alcuna maschera.
@@ -99,9 +107,13 @@ Nella sezione **Scala metrica** (con Metashape):
 2. **Trova la stecca da solo** — accendi l'interruttore e indica la lunghezza.
 3. **Target codificati** — indica la distanza fra due target stampati da Metashape.
 
+![Scala metrica](img/scala.jpg)
+
 **Topografia (GCP)**: con **Punti di controllo (GCP)** scegli la foto, ingrandisci, tocca il
 punto a terra e scrivi Est, Nord e Quota. Funziona con **entrambi** i motori; con le foto da
 drone la georeferenziazione avviene già col GPS.
+
+![Punti di controllo e motore](img/gcp.jpg)
 
 ## 8. Invia ed elabora
 
@@ -116,11 +128,19 @@ foto, fino a un'ora. Puoi chiudere l'app: il lavoro è sul computer.
 **Vedi modello 3D**: si gira con le dita, lo sfondo si sceglie col selettore colore. La prima
 apertura scarica il modello, poi è immediato.
 
+![Il modello nel visore](img/modello.jpg)
+
 **Sezioni e profili**: tocca le **forbici**, gira il modello come vuoi disegnarlo, **tocca due
 punti**, poi scegli il taglio:
 
 - **Come lo vedo** — profilo di un vaso o di un coccio;
 - **Lungo la linea** — sezione di un terreno.
+
+![Sezione «come lo vedo»](img/sezione.jpg)
+
+![Sezione «lungo la linea»](img/sezione2.jpg)
+
+![Profilo di uno scavo](img/profilo-terreno.jpg)
 
 Vengono riportate larghezza, altezza e lunghezza della linea (il righello le accende e le
 spegne). Con **Aggiungi alla tavola** ogni sezione prende una lettera (A–A1, B–B1) che compare
