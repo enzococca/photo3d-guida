@@ -446,6 +446,24 @@
       <pre><code><span class="p">$</span> docker run -d -p 3000:3000 --name nodeodm \
       --restart unless-stopped opendronemap/nodeodm</code></pre>
       <p>From then on the engine restarts by itself. With an NVIDIA card add <code>--gpus all</code>.</p>
+
+      <h3>Free engine for objects (COLMAP + OpenMVS)</h3>
+      <p>A free alternative to Metashape. It installs itself: in the Mac app, <b>Free engine</b> panel, <b>Install</b> button. From the terminal:</p>
+      <pre><code><span class="p">$</span> photo3d-server --installa-motore open</code></pre>
+      <p>It takes roughly 220 MB on Mac, 145 on Windows, 670 on Linux.</p>
+      <p><b>Before you head to the field</b>, with a good internet connection:</p>
+      <pre><code><span class="p">$</span> photo3d-server --installa-motore open --solo-scarica</code></pre>
+      <p>fills the cache, so the real install works even offline.</p>
+      <p><b>What to know:</b></p>
+      <ul>
+        <li>on Mac it is three to five times slower than Metashape, because OpenMVS only runs on CPU there; the automatic install is <b>CPU-only on every platform</b>, Windows included: speeds only become comparable once you manually install OpenMVS's CUDA build, not with the installer;</li>
+        <li><b>to do that</b>: install the engine the normal way first (<code>--installa-motore open</code>), then download <code>OpenMVS_Windows_x64_CUDA.7z</code> from the OpenMVS v2.4.0 GitHub release and extract it over <code>…\Photo3D\engines\open\openmvs\</code>, replacing the binaries; then open <code>manifest.json</code> (same <code>open</code> folder) and set <code>"cuda": true</code> by hand. Don't rerun the install after swapping the binaries: it would wipe that folder again and refill it with the CPU build, losing the swap;</li>
+        <li><b>Intel Macs</b> are not supported (pycolmap only publishes the Apple Silicon version);</li>
+        <li>scale works with <b>tap</b> and <b>scale bar</b>; coded markers don't, those stay Metashape only;</li>
+        <li>merging two sides is not yet available on this engine;</li>
+        <li>during the <b>depth maps</b> phase the progress bar restarts from zero several times: those are OpenMVS's internal sub-phases (estimate, filter, fuse), not a hang;</li>
+        <li>a first full run on Apple Silicon (64 photos, preview preset) took roughly ten minutes.</li>
+      </ul>
     </section>
 
     <section class="passo" id="p3">

@@ -455,6 +455,24 @@
       <pre><code><span class="p">$</span> docker run -d -p 3000:3000 --name nodeodm \
       --restart unless-stopped opendronemap/nodeodm</code></pre>
       <p>Da lì in poi il motore riparte da solo a ogni accensione. Con una scheda NVIDIA aggiungi <code>--gpus all</code>.</p>
+
+      <h3>Motore gratuito per gli oggetti (COLMAP + OpenMVS)</h3>
+      <p>Alternativa a Metashape che non costa niente. Si installa da sola: nell'app Mac, riquadro <b>Motore gratuito</b>, bottone <b>Installa</b>. Da terminale:</p>
+      <pre><code><span class="p">$</span> photo3d-server --installa-motore open</code></pre>
+      <p>Pesa circa 220 MB su Mac, 145 su Windows, 670 su Linux.</p>
+      <p><b>Prima di partire per il campo</b>, con la rete ancora buona:</p>
+      <pre><code><span class="p">$</span> photo3d-server --installa-motore open --solo-scarica</code></pre>
+      <p>riempie la cache, così l'installazione vera funziona anche senza connessione.</p>
+      <p><b>Cosa sapere:</b></p>
+      <ul>
+        <li>sul Mac è da tre a cinque volte più lento di Metashape, perché OpenMVS lì gira solo su CPU; l'installazione automatica è <b>CPU-only su ogni piattaforma</b>, Windows compreso: i tempi tornano paragonabili solo installando a mano la build CUDA di OpenMVS, non con l'installer;</li>
+        <li><b>per farlo</b>: installa prima il motore nel modo normale (<code>--installa-motore open</code>), poi scarica <code>OpenMVS_Windows_x64_CUDA.7z</code> dalla release GitHub di OpenMVS v2.4.0 ed estrailo sopra <code>…\Photo3D\engines\open\openmvs\</code>, sostituendo i binari; infine apri <code>manifest.json</code> (nella stessa cartella <code>open</code>) e metti a mano <code>"cuda": true</code>. Non rilanciare l'installazione dopo aver sostituito i binari: cancellerebbe di nuovo quella cartella e la riempirebbe con la build CPU, perdendo la sostituzione;</li>
+        <li>i <b>Mac Intel</b> non sono supportati (pycolmap pubblica solo la versione Apple Silicon);</li>
+        <li>la scala funziona col <b>tocco</b> e con la <b>stecca</b>; i marker codificati no, quelli restano solo su Metashape;</li>
+        <li>la fusione di due lati non è ancora disponibile su questo motore;</li>
+        <li>durante la fase <b>Mappe di profondità</b> la barra di avanzamento riparte da zero più volte: sono le sottofasi interne di OpenMVS (stima, filtro, fusione), non un blocco;</li>
+        <li>un primo ciclo completo su Apple Silicon (64 foto, preset veloce) ha richiesto circa dieci minuti.</li>
+      </ul>
     </section>
 
     <section class="passo" id="p3">
