@@ -692,6 +692,8 @@
         <div class="pannello" role="tabpanel" id="s2-lin" aria-labelledby="t2-lin">
           <pre><code><span class="p">$</span> scripts/tunnel.sh        <span class="c"># prints address and password</span>
 <span class="p">$</span> scripts/tailscale.sh     <span class="c"># an address that never changes</span></code></pre>
+      <p><b>An address that never changes, with Cloudflare too</b>: if <code>~/.cloudflared/</code> holds a named-tunnel configuration (<code>config-photo3d.yml</code>), both the app button and <code>scripts/tunnel.sh</code> pick it up on their own and the address stays the same forever (for example <code>https://photo3d.pyarchinit.com</code>) instead of the random <code>trycloudflare.com</code>. One-time setup: <code>cloudflared tunnel login</code>, <code>tunnel create photo3d</code>, and the subdomain's DNS record.</p>
+      <p><b>Always-on tunnel, reboots included</b>: on macOS a user LaunchAgent (<code>~/Library/LaunchAgents/com.enzo.photo3d.tunnel.plist</code>, with <code>KeepAlive</code>) starts the tunnel at login and restarts it if it drops — the fixed address depends neither on the app nor on an open terminal. Log in <code>~/Library/Logs/photo3d-tunnel.log</code>; to stop it: <code>launchctl bootout gui/$(id -u)/com.enzo.photo3d.tunnel</code>. On Linux the equivalent is a small user systemd unit.</p>
         </div>
         <div class="pannello" role="tabpanel" id="s2-win" aria-labelledby="t2-win" hidden>
           <p>Right-click <b>tunnel.ps1</b> → <i>Run with PowerShell</i>: it downloads what it needs and prints address and password. For the password alone: <b>genera-token.ps1</b>.</p>
