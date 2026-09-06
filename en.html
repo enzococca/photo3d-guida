@@ -709,6 +709,33 @@
         waypoint to restart from (the app tells you which).</p>
       </div>
 
+      <h3>With the screen controller: the KMZ in DJI Fly</h3>
+      <p>With the DJI RC 2 (or RC Pro) Photo3D cannot pilot, because those controllers accept no
+      third-party apps. The KMZ, though, is written the way DJI Fly writes it, so you load it there
+      and fly from there. This also works with the RC‑N3 if you prefer DJI Fly.</p>
+      <ol class="elenco">
+        <li><b>Export the plan.</b> Pick the shooting mode that suits DJI Fly: <b>one shot per
+        point</b> (the shot is inside the file and DJI Fly runs it by itself; each leg stays under 100
+        waypoints, hence more files), or <b>timed shooting</b> (light files with only the turns, but
+        you set the timer yourself in DJI Fly's camera, <i>Timed Shot</i>, with the interval the plan
+        shows). Then <b>Export KMZ</b>: a zip with one KMZ per leg.</li>
+        <li><b>Create the containers in DJI Fly.</b> On the controller open waypoint flight, draw any
+        mission with two points and save it: DJI Fly creates a folder named like
+        <code>550E8400-E29B-…</code> with a <code>.kmz</code> file of the same name inside. One dummy
+        mission per leg.</li>
+        <li><b>Replace the files.</b> Connect the controller to the computer over USB‑C (on a Mac you
+        need <i>Android File Transfer</i> or <i>OpenMTP</i>; macOS does not open Android devices by
+        itself). Go to <code>Android/data/dji.go.v5/files/waypoint/&lt;folder&gt;/</code> and replace
+        the <code>.kmz</code> with the leg's one, <b>renamed to the folder's name</b>.</li>
+        <li><b>Fly.</b> Reopen DJI Fly: the mission library shows the imported routes. Check altitude
+        and speed and go; at the end of a leg the drone returns, you swap the battery and launch the
+        next. If a leg stops halfway, DJI Fly lets you pick the waypoint to restart from: note the
+        last one reached, because landing resets the count.</li>
+        <li><b>The photos</b> come from the card: in Photo3D use <b>Add from Files or SD card</b>.</li>
+      </ol>
+      <p>DJI Fly may draw the routes a bit crooked in the preview, but flies them fine. Here too,
+      before leaving, a short leg over a meadow.</p>
+
       <h3>Or fly however you like</h3>
       <p>The plan is <b>optional</b>: fly by hand with DJI Fly and shoot as you see fit (useful for section faces, standing structures, details). Then close DJI Fly, open Photo3D and use <b>Fetch the photos from the drone</b>: the card is downloaded straight into the session — no card reader, no camera roll.</p>
 

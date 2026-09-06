@@ -752,6 +752,34 @@
         (l'app te lo dice).</p>
       </div>
 
+      <h3>Col telecomando con lo schermo: il KMZ in DJI Fly</h3>
+      <p>Con il DJI RC 2 (o RC Pro) Photo3D non può pilotare, perché quei telecomandi non accettano
+      app di terze parti. Il KMZ però è scritto come lo scrive DJI Fly stessa, quindi si carica lì e
+      si vola da lì. Vale anche con l'RC‑N3 se preferisci DJI Fly.</p>
+      <ol class="elenco">
+        <li><b>Esporta il piano.</b> Scegli il modo di scatto adatto a DJI Fly: <b>uno scatto per
+        punto</b> (lo scatto sta nel file e DJI Fly lo esegue da sola; ogni tratta resta sotto i 100
+        waypoint, quindi più file), oppure <b>scatto a intervallo</b> (file leggeri con le sole
+        svolte, ma lo scatto a tempo lo imposti tu nella camera di DJI Fly, <i>Timed Shot</i>, con
+        l'intervallo che il piano indica). Poi <b>Esporta KMZ</b>: uno zip con un KMZ per tratta.</li>
+        <li><b>Crea i contenitori in DJI Fly.</b> Sul telecomando apri il volo con waypoint, disegna
+        una missione qualsiasi con due punti e salvala: DJI Fly crea una cartella con un nome del tipo
+        <code>550E8400-E29B-…</code> e dentro un file <code>.kmz</code> con lo stesso nome. Una
+        missione fittizia per ogni tratta.</li>
+        <li><b>Sostituisci i file.</b> Collega il telecomando al computer con l'USB‑C (su Mac serve
+        <i>Android File Transfer</i> o <i>OpenMTP</i>, macOS non apre i dispositivi Android da solo).
+        Vai in <code>Android/data/dji.go.v5/files/waypoint/&lt;cartella&gt;/</code> e sostituisci il
+        <code>.kmz</code> con quello della tratta, <b>rinominato col nome della cartella</b>.</li>
+        <li><b>Vola.</b> Riapri DJI Fly: la libreria delle missioni mostra le rotte importate.
+        Controlla quota e velocità e parti; a fine tratta il drone rientra, cambi batteria e lanci la
+        seguente. Se una tratta si interrompe a metà, DJI Fly fa scegliere da quale waypoint
+        ripartire: segnati l'ultimo raggiunto, perché atterrando il conteggio si azzera.</li>
+        <li><b>Le foto</b> arrivano dalla scheda: in Photo3D usa <b>Aggiungi da File o scheda
+        SD</b>.</li>
+      </ol>
+      <p>DJI Fly può disegnare le rotte un po' storte in anteprima, ma le vola bene. Anche qui, prima
+      di partire, una tratta corta sopra un prato.</p>
+
       <h3>Oppure vola come vuoi</h3>
       <p>Il piano è <b>facoltativo</b>: vola a mano con DJI Fly e scatta a tuo giudizio (utile per
       pareti di taglio, strutture verticali, dettagli). Poi chiudi DJI Fly, apri Photo3D e usa
