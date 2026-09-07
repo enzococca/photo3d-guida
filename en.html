@@ -505,7 +505,7 @@
 
     <section class="passo" id="drone">
       <div class="capo"><span class="num">5b</span><h2>Fly the drone (Android app)</h2></div>
-      <p>With an <b>Android</b> phone, Photo3D can fly the DJI drones supported by Mobile SDK v5: Mini 3, Mini 3 Pro, <b>Mini 4 Pro</b>, Mavic 3 Enterprise / 3T / 3M, Matrice 30, 4E/4T, 300 and 350.
+      <p>With an <b>Android</b> phone, Photo3D can fly the DJI drones supported by Mobile SDK v5: Mini 3, Mini 3 Pro, <b>Mini 4 Pro</b>, Mavic 3 Enterprise / 3T / 3M, Matrice 30, 4E/4T, 300 and 350, and the <b>Parrot</b> Anafi, Anafi USA and Anafi Ai (those from the iPhone too, see below).
       The newer consumer models (<b>Mini 5 Pro</b>, Air 3 and 3S, Mavic 3 and 4 Pro) cannot be flown by the app, but they fly the same plan from DJI Fly: see "With the screen controller".</p>
 
       <h3>Which drones</h3>
@@ -526,6 +526,7 @@
             <tr><td>DJI Matrice 4D / 4TD</td><td>Enterprise / Dock</td><td>Automated flights from a dock</td></tr>
             <tr><td>DJI Matrice 300 RTK / 350 RTK</td><td>Enterprise</td><td>Interchangeable cameras (P1, H20): centimetre accuracy</td></tr>
             <tr><td>DJI Matrice 400</td><td>Enterprise</td><td>The largest of the line</td></tr>
+            <tr><td><b>Parrot Anafi, Anafi USA, Anafi Ai</b></td><td>Parrot</td><td>With GroundSDK, from Android <b>and from the iPhone</b>: phone on the drone's Wi‑Fi or on the SkyController</td></tr>
           </tbody>
         </table>
       </div>
@@ -729,6 +730,23 @@
         waypoint to restart from (the app tells you which).</p>
       </div>
 
+      <h3>The Parrots: Anafi, Anafi USA, Anafi Ai</h3>
+      <p>With the Parrots the app really flies, on Android and on the iPhone, because Parrot has an
+      open SDK (GroundSDK). Put the phone on the <b>drone's Wi‑Fi</b> (Anafi) or connect it to the
+      <b>SkyController</b> with the cable; the app finds the drone by itself and model and battery
+      appear at the top of the screen. Then everything goes as with the DJIs: <b>Prepare the leg</b>
+      writes the flight plan in Parrot's format (take-off, speed, camera pitch, a photo every N metres
+      in GPS-lapse or one per point, the waypoints with the nose along the route or toward the target
+      point, return) and uploads it to the drone; <b>Take off</b> starts it; <b>Stop</b> interrupts and
+      brings the drone back; <b>Resume from where it left</b> redoes what remains of the leg after the
+      battery swap. The drone takes the photos by itself, by distance, so there is no Timed Shot to
+      set, and they stay on its card: import them with <b>Add from Files or SD card</b>. On the iPhone
+      the <b>Parrot</b> section of the Drone screen does the same things, leg by leg, with the plan
+      taken from the server. No camera image in the app and no photo download over the radio: those
+      remain DJI features.</p>
+      <p>First time here too with a short leg over a meadow: the plan upload, the take-off, the photo
+      every N metres (the camera light), Stop halfway with the return, Resume.</p>
+
       <h3 id="rc2">With the screen controller: the KMZ in DJI Fly</h3>
       <p>With the DJI RC 2 (or RC Pro) Photo3D cannot pilot, because those controllers accept no
       third-party apps. The KMZ, though, is written the way DJI Fly writes it, so you load it there
@@ -797,10 +815,10 @@
         drones and the home-built ones. Open it in QGroundControl or Mission Planner, check altitude
         and camera, upload to the drone. The autopilot triggers the shots
         (<code>DO_SET_CAM_TRIGG_DIST</code>): the camera must be wired to it.</li>
-        <li><b>Parrot (.mavlink)</b>: <b>Anafi, Anafi USA and Anafi Ai</b>, in GroundSDK's dialect.
-        On iPhone or Android share the single leg's file with <b>FreeFlight 7</b>, which opens it in
-        Flight Plan; photos are GPS-lapse. The same file uploads from QGroundControl or with
-        GroundSDK.</li>
+        <li><b>Parrot (.mavlink)</b>: <b>Anafi, Anafi USA and Anafi Ai</b>, in GroundSDK's dialect,
+        for those who prefer flying from <b>FreeFlight 7</b> (share the single leg's file, which opens
+        in Flight Plan) or from QGroundControl. With Photo3D on Android or iPhone the file is not
+        needed: the app flies them directly, see "The Parrots".</li>
         <li><b>Litchi (.csv)</b>: the <b>DJI models without waypoints in DJI Fly</b> (Mini 2 and SE,
         Air 2 and 2S, Mavic 2, Phantom 4), which Litchi flies on iOS and Android. Import the CSV in
         the Mission Hub (flylitchi.com/hub), save, and the mission shows up in the app. Camera
@@ -812,7 +830,8 @@
 
       <h3>From the iPhone: the Drone screen</h3>
       <p>The iOS app does not fly (DJI's Mobile SDK is Android only), but from the airplane button
-      at the top it does everything else. <b>Plan from the server</b> takes the plan drawn in the
+      at the top it does everything else, and with the <b>Parrots</b> it flies (Parrot section: Prepare,
+      Take off, Stop, Resume, leg by leg). <b>Plan from the server</b> takes the plan drawn in the
       planner and shows its legs; <b>Files for the flight app</b> hands the share sheet the KMZ,
       the QGroundControl plan, Parrot's MAVLink or Litchi's CSV, all legs in a zip or a single leg
       from the button on its row (FreeFlight 7 wants the single leg). <b>Copy into DJI Fly</b> is
