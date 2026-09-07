@@ -526,7 +526,9 @@
     <section class="passo" id="drone">
       <div class="capo"><span class="num">5b</span><h2>Volare col drone (app Android)</h2></div>
       <p>Con un telefono <b>Android</b> Photo3D può pilotare i droni DJI supportati dal Mobile SDK v5:
-      Mini 3, Mini 3 Pro, <b>Mini 4 Pro</b>, Mavic 3 Enterprise / 3T / 3M, Matrice 30, 4E/4T, 300 e 350.</p>
+      Mini 3, Mini 3 Pro, <b>Mini 4 Pro</b>, Mavic 3 Enterprise / 3T / 3M, Matrice 30, 4E/4T, 300 e 350.
+      I consumer più recenti (<b>Mini 5 Pro</b>, Air 3 e 3S, Mavic 3 e 4 Pro) non si pilotano dall'app,
+      ma volano lo stesso piano da DJI Fly: vedi «Col telecomando con lo schermo».</p>
 
       <h3>Quali droni</h3>
       <p>Photo3D usa il <b>Mobile SDK v5</b> di DJI, che è l'unico modo per far pilotare un drone da
@@ -551,9 +553,14 @@
       </div>
       <div class="nota attenzione">
         <p><b>Non tutti i DJI recenti sono pilotabili da app esterne.</b> Restano fuori, per scelta di
-        DJI, <b>Air 3 e Air 3S, Mavic 4 Pro, Mini 5 Pro, Neo, Flip e Avata 2</b>: con questi si vola
-        con DJI Fly e si importano le foto dalla scheda. Fuori anche i telecomandi con schermo
-        integrato (RC 2, RC Pro), che non accettano app di terze parti.</p>
+        DJI, <b>Air 3 e Air 3S, Mavic 3 (Classic, Pro), Mavic 4 Pro, Mini 5 Pro, Neo, Flip e Avata 2</b>,
+        e anche i telecomandi con schermo integrato (RC 2, RC Pro), che non accettano app di terze
+        parti. Quelli che hanno i <b>waypoint in DJI Fly</b> volano però il piano di Photo3D lo stesso:
+        Mini 4 Pro, <b>Mini 5 Pro</b>, Air 3, Air 3S, Mavic 3 / Classic / Pro e Mavic 4 Pro. Si esporta
+        il KMZ e lo si copia nel telecomando (vedi <a href="#rc2">Col telecomando con lo schermo</a>);
+        il pianificatore e l'app hanno il profilo camera di ciascuno. Senza waypoint restano Mini 3 e
+        Mini 3 Pro (che si pilotano solo dall'app), Neo, Flip e Avata 2: con questi si vola a mano e
+        si importano le foto dalla scheda.</p>
       </div>
 
       <h3>Collegare il telefono al telecomando</h3>
@@ -754,10 +761,20 @@
         (l'app te lo dice).</p>
       </div>
 
-      <h3>Col telecomando con lo schermo: il KMZ in DJI Fly</h3>
+      <h3 id="rc2">Col telecomando con lo schermo: il KMZ in DJI Fly</h3>
       <p>Con il DJI RC 2 (o RC Pro) Photo3D non può pilotare, perché quei telecomandi non accettano
       app di terze parti. Il KMZ però è scritto come lo scrive DJI Fly stessa, quindi si carica lì e
       si vola da lì. Vale anche con l'RC‑N3 se preferisci DJI Fly.</p>
+      <p><b>Con quali droni.</b> Con tutti quelli che hanno i waypoint in DJI Fly: Mini 4 Pro,
+      <b>Mini 5 Pro</b>, Air 3, Air 3S, Mavic 3 / Classic / Pro e Mavic 4 Pro (non Mini 3 e Mini 3 Pro,
+      Neo, Flip, Avata 2, che i waypoint non li hanno). Nel pianificatore e nell'app scegli il
+      <b>profilo del tuo drone</b> (gruppo «solo con DJI Fly»): passo fra gli scatti, velocità, cadenza
+      e GSD sono i suoi, il file è lo stesso per tutti. Dentro c'è il codice 68 del Mini 4 Pro:
+      provato sul Mini 4 Pro, riferito funzionante su Mini 5 Pro e Mavic 3 Pro, dato per buono sugli
+      altri; se DJI Fly non mostra la missione, è quel codice da cambiare. Sui droni con più camere
+      (Air 3 e 3S, Mavic 3 Pro, Mavic 4 Pro) il file non sceglie l'obiettivo: prima di partire metti
+      la camera <b>grandangolare</b> (la principale) e, con lo scatto a intervallo, avvia il
+      <i>Timed Shot</i> a mano. Anche qui, prima volta con una tratta corta sopra un prato.</p>
       <ol class="elenco">
         <li><b>Esporta il piano.</b> Scegli il modo di scatto adatto a DJI Fly: <b>uno scatto per
         punto</b> (lo scatto sta nel file e DJI Fly lo esegue da sola; ogni tratta resta sotto i 100

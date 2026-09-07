@@ -505,7 +505,8 @@
 
     <section class="passo" id="drone">
       <div class="capo"><span class="num">5b</span><h2>Fly the drone (Android app)</h2></div>
-      <p>With an <b>Android</b> phone, Photo3D can fly the DJI drones supported by Mobile SDK v5: Mini 3, Mini 3 Pro, <b>Mini 4 Pro</b>, Mavic 3 Enterprise / 3T / 3M, Matrice 30, 4E/4T, 300 and 350.</p>
+      <p>With an <b>Android</b> phone, Photo3D can fly the DJI drones supported by Mobile SDK v5: Mini 3, Mini 3 Pro, <b>Mini 4 Pro</b>, Mavic 3 Enterprise / 3T / 3M, Matrice 30, 4E/4T, 300 and 350.
+      The newer consumer models (<b>Mini 5 Pro</b>, Air 3 and 3S, Mavic 3 and 4 Pro) cannot be flown by the app, but they fly the same plan from DJI Fly: see "With the screen controller".</p>
 
       <h3>Which drones</h3>
       <p>Photo3D uses DJI's <b>Mobile SDK v5</b>, the only way a third-party app can fly a drone.
@@ -530,9 +531,14 @@
       </div>
       <div class="nota attenzione">
         <p><b>Not every recent DJI can be flown by an external app.</b> DJI leaves out <b>Air 3 and
-        Air 3S, Mavic 4 Pro, Mini 5 Pro, Neo, Flip and Avata 2</b>: with those you fly using DJI Fly
-        and import the photos from the card. Controllers with a built-in screen (RC 2, RC Pro) are
-        out too — they don't accept third-party apps.</p>
+        Air 3S, Mavic 3 (Classic, Pro), Mavic 4 Pro, Mini 5 Pro, Neo, Flip and Avata 2</b>, and the
+        controllers with a built-in screen (RC 2, RC Pro), which don't accept third-party apps. The
+        ones that have <b>waypoints in DJI Fly</b> still fly the Photo3D plan, though: Mini 4 Pro,
+        <b>Mini 5 Pro</b>, Air 3, Air 3S, Mavic 3 / Classic / Pro and Mavic 4 Pro. Export the KMZ and
+        copy it to the controller (see <a href="#rc2">With the screen controller</a>); the planner and
+        the app have a camera profile for each. Without waypoints remain Mini 3 and Mini 3 Pro (flown
+        only by the app), Neo, Flip and Avata 2: with those you fly by hand and import the photos from
+        the card.</p>
       </div>
 
       <h3>Connecting the phone to the controller</h3>
@@ -711,10 +717,20 @@
         waypoint to restart from (the app tells you which).</p>
       </div>
 
-      <h3>With the screen controller: the KMZ in DJI Fly</h3>
+      <h3 id="rc2">With the screen controller: the KMZ in DJI Fly</h3>
       <p>With the DJI RC 2 (or RC Pro) Photo3D cannot pilot, because those controllers accept no
       third-party apps. The KMZ, though, is written the way DJI Fly writes it, so you load it there
       and fly from there. This also works with the RC‑N3 if you prefer DJI Fly.</p>
+      <p><b>Which drones.</b> Every one that has waypoints in DJI Fly: Mini 4 Pro, <b>Mini 5 Pro</b>,
+      Air 3, Air 3S, Mavic 3 / Classic / Pro and Mavic 4 Pro (not Mini 3 and Mini 3 Pro, Neo, Flip,
+      Avata 2, which have no waypoints). In the planner and in the app pick <b>your drone's
+      profile</b> (the "only with DJI Fly" group): photo spacing, speed, shooting cadence and GSD are
+      its own, the file is the same for all. Inside is the Mini 4 Pro's code 68: tested on the Mini 4
+      Pro, reported working on the Mini 5 Pro and Mavic 3 Pro, assumed for the others; if DJI Fly does
+      not show the mission, that code is what needs changing. On multi-camera drones (Air 3 and 3S,
+      Mavic 3 Pro, Mavic 4 Pro) the file does not pick the lens: before take-off select the
+      <b>wide</b> (main) camera and, with timed shooting, start the <i>Timed Shot</i> by hand. Here too,
+      first time with a short leg over a meadow.</p>
       <ol class="elenco">
         <li><b>Export the plan.</b> Pick the shooting mode that suits DJI Fly: <b>one shot per
         point</b> (the shot is inside the file and DJI Fly runs it by itself; each leg stays under 100
