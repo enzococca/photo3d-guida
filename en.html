@@ -731,6 +731,16 @@
       Mavic 3 Pro, Mavic 4 Pro) the file does not pick the lens: before take-off select the
       <b>wide</b> (main) camera and, with timed shooting, start the <i>Timed Shot</i> by hand. Here too,
       first time with a short leg over a meadow.</p>
+      <p><b>With a screenless controller (RC‑N2, RC‑N3).</b> Only the folder's location changes,
+      because DJI Fly on the phone does the flying either way. On <b>Android</b> the folder is the
+      same as on the RC 2, <code>Android/data/dji.go.v5/files/waypoint/&lt;folder&gt;/&lt;folder&gt;.kmz</code>:
+      reach it from the computer over the cable, as with the controller; on the phone itself, from
+      Android 11 on, only with a file manager that goes through Shizuku (FV File Explorer, for
+      instance), because apps cannot enter other apps' data. On <b>iPhone and iPad</b> use the Files
+      app: <i>On My iPhone → DJI Fly → wayline_mission → folder</i>; put the KMZ in iCloud Drive or in
+      Files, paste it into the placeholder mission's folder, copy the original file's name, delete
+      it and rename the new one to that name. From DJI Fly 1.17 missions can also be uploaded to the
+      DJI cloud and show up on the other device.</p>
       <ol class="elenco">
         <li><b>Export the plan.</b> Pick the shooting mode that suits DJI Fly: <b>one shot per
         point</b> (the shot is inside the file and DJI Fly runs it by itself; each leg stays under 100
@@ -741,10 +751,18 @@
         mission with two points and save it: DJI Fly creates a folder named like
         <code>550E8400-E29B-…</code> with a <code>.kmz</code> file of the same name inside. One dummy
         mission per leg.</li>
-        <li><b>Replace the files.</b> Connect the controller to the computer over USB‑C (on a Mac you
-        need <i>Android File Transfer</i> or <i>OpenMTP</i>; macOS does not open Android devices by
-        itself). Go to <code>Android/data/dji.go.v5/files/waypoint/&lt;folder&gt;/</code> and replace
-        the <code>.kmz</code> with the leg's one, <b>renamed to the folder's name</b>.</li>
+        <li><b>Replace the files.</b> Connect the controller (or the phone) to the computer over
+        USB‑C. In the planner the <b>Copy into DJI Fly</b> panel does the work: <b>Find the
+        device</b> locates the waypoint folder (on Windows the controller or phone connected over
+        USB, on Linux the mounted device, anywhere an SD card or a path you paste), lists the
+        placeholder missions with date and number of points, assigns one leg to each, and <b>Copy to
+        the device</b> writes every KMZ over the mission's file, with the right name. If the device
+        is not visible as a folder (on a Mac the RC 2 and Android phones do not mount: you need
+        <i>Android File Transfer</i> or <i>OpenMTP</i>), type the placeholder mission names and
+        <b>Download the ready folders</b>: a zip with <code>&lt;folder&gt;/&lt;folder&gt;.kmz</code>, to
+        drag into <code>waypoint/</code> replacing the folders with the same names. By hand, the path
+        is <code>Android/data/dji.go.v5/files/waypoint/&lt;folder&gt;/</code>: replace the
+        <code>.kmz</code> with the leg's one, <b>renamed to the folder's name</b>.</li>
         <li><b>Fly.</b> Reopen DJI Fly: the mission library shows the imported routes. Check altitude
         and speed and go; at the end of a leg the drone returns, you swap the battery and launch the
         next. If a leg stops halfway, DJI Fly lets you pick the waypoint to restart from: note the

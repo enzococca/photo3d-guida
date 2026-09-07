@@ -775,6 +775,16 @@
       (Air 3 e 3S, Mavic 3 Pro, Mavic 4 Pro) il file non sceglie l'obiettivo: prima di partire metti
       la camera <b>grandangolare</b> (la principale) e, con lo scatto a intervallo, avvia il
       <i>Timed Shot</i> a mano. Anche qui, prima volta con una tratta corta sopra un prato.</p>
+      <p><b>Col telecomando senza schermo (RC‑N2, RC‑N3).</b> Cambia solo dove sta la cartella,
+      perché a volare è sempre DJI Fly, sul telefono. Su <b>Android</b> la cartella è la stessa
+      dell'RC 2, <code>Android/data/dji.go.v5/files/waypoint/&lt;cartella&gt;/&lt;cartella&gt;.kmz</code>:
+      la raggiungi dal computer col cavo, come col telecomando; sul telefono stesso, da Android 11 in
+      poi, solo con un gestore di file che passi da Shizuku (per esempio FV File Explorer), perché le
+      app non entrano nei dati delle altre. Su <b>iPhone e iPad</b> si usa l'app File: <i>Sul mio
+      iPhone → DJI Fly → wayline_mission → cartella</i>; metti il KMZ in iCloud Drive o in File,
+      incollalo nella cartella della missione fittizia, copia il nome del file originale, cancellalo
+      e rinomina il nuovo con quel nome. Da DJI Fly 1.17 le missioni si possono anche caricare sul
+      cloud DJI, e si ritrovano sull'altro dispositivo.</p>
       <ol class="elenco">
         <li><b>Esporta il piano.</b> Scegli il modo di scatto adatto a DJI Fly: <b>uno scatto per
         punto</b> (lo scatto sta nel file e DJI Fly lo esegue da sola; ogni tratta resta sotto i 100
@@ -785,9 +795,18 @@
         una missione qualsiasi con due punti e salvala: DJI Fly crea una cartella con un nome del tipo
         <code>550E8400-E29B-…</code> e dentro un file <code>.kmz</code> con lo stesso nome. Una
         missione fittizia per ogni tratta.</li>
-        <li><b>Sostituisci i file.</b> Collega il telecomando al computer con l'USB‑C (su Mac serve
-        <i>Android File Transfer</i> o <i>OpenMTP</i>, macOS non apre i dispositivi Android da solo).
-        Vai in <code>Android/data/dji.go.v5/files/waypoint/&lt;cartella&gt;/</code> e sostituisci il
+        <li><b>Sostituisci i file.</b> Collega il telecomando (o il telefono) al computer con
+        l'USB‑C. Nel pianificatore il pannello <b>Copia in DJI Fly</b> fa il lavoro: <b>Cerca il
+        dispositivo</b> trova la cartella dei waypoint (su Windows il telecomando o il telefono
+        collegati via USB, su Linux il dispositivo montato, ovunque una scheda SD o un percorso che
+        incolli), elenca le missioni fittizie con data e numero di punti, assegna una tratta a
+        ciascuna e <b>Copia nel dispositivo</b> scrive ogni KMZ al posto del file della missione, col
+        nome giusto. Se il dispositivo non si vede come cartella (su Mac l'RC 2 e i telefoni Android
+        non si montano: servono <i>Android File Transfer</i> o <i>OpenMTP</i>), scrivi i nomi delle
+        missioni fittizie e <b>Scarica le cartelle pronte</b>: uno zip con
+        <code>&lt;cartella&gt;/&lt;cartella&gt;.kmz</code>, da trascinare dentro <code>waypoint/</code>
+        sostituendo le cartelle omonime. A mano, il percorso è
+        <code>Android/data/dji.go.v5/files/waypoint/&lt;cartella&gt;/</code>: sostituisci il
         <code>.kmz</code> con quello della tratta, <b>rinominato col nome della cartella</b>.</li>
         <li><b>Vola.</b> Riapri DJI Fly: la libreria delle missioni mostra le rotte importate.
         Controlla quota e velocità e parti; a fine tratta il drone rientra, cambi batteria e lanci la
