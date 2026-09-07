@@ -673,6 +673,13 @@
       fase, cronometro, scatti fatti e quanta batteria stima di consumare quella tratta, andata e
       ritorno compresi: se supera il 100%, accorcia i minuti per batteria o sposta il decollo più
       vicino.</p>
+      <p><b>Il video della simulazione.</b> Con la spunta <b>registra il video</b> accanto a Simula,
+      la simulazione viene registrata: la mappa con le tegole, le rotte, gli scatti che si accendono,
+      i punti di decollo, il drone e la riga di stato in basso. A fine volo (o con Ferma) compare
+      <b>Scarica il video</b>: MP4 dove il browser lo sa scrivere (Chrome, Safari), altrimenti WebM,
+      e se sul server c'è ffmpeg il bottone <b>MP4</b> lo converte lì. È il file da mandare a chi
+      vuole vedere il volo prima che avvenga. Il video ha la dimensione della mappa sullo schermo:
+      allarga la finestra prima di registrare, e a 30× un volo di un'ora dura due minuti.</p>
       <p><b>Spostarsi fra una batteria e l'altra.</b> Ogni tratta è un volo a sé: il file non
       contiene il punto di decollo, il drone parte da dove sei, va dritto al primo waypoint della
       tratta e a fine tratta torna al punto da cui è decollato <i>quella</i> volta. Partire da sud e
@@ -684,7 +691,13 @@
       diventare pericoloso. Tutti i decolli di un blocco dallo stesso livello di terreno. Sotto la
       simulazione, <b>Decollo per tratta</b> dà a ogni tratta il suo punto (un click sulla mappa, il
       marcatore H1, H2… si trascina): la simulazione e la stima di batteria partono da lì, e il KML
-      esportato segna i punti di decollo, così sul campo sai dove metterti.</p>
+      esportato segna i punti di decollo, così sul campo sai dove metterti. <b>Ottimizza i
+      decolli</b> li calcola da solo: per ogni tratta il punto a metà fra primo e ultimo waypoint,
+      dove andata e ritorno sommati sono più corti, e le tratte con punti vicini (entro 150 m)
+      condividono il decollo, così ci si sposta di rado; il messaggio dice quanti punti sono usciti
+      e quanti chilometri si risparmiano. È una proposta sulla sola distanza: controlla che siano
+      posti dove puoi stare, allo stesso livello del terreno, e trascinali se serve; <b>Togli
+      tutti</b> torna all'H generale.</p>
       <p><b>Il simulatore di DJI non c'è per il Mini 4 Pro.</b> DJI Assistant 2 (Consumer Drones
       Series), anche su Mac, per il Mini 4 Pro fa solo aggiornamento firmware, dati Flysafe ed
       esportazione dei log: il Simulator, nelle note di rilascio, compare solo per Mavic 2, Air 2,

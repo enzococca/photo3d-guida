@@ -631,6 +631,14 @@
       shots lighting up on the map, the return, the battery swap. The line below tells leg, phase,
       clock, shots taken and how much battery that leg is expected to use, transit included: above
       100%, shorten the minutes per battery or move the take-off closer.</p>
+      <p><b>The simulation video.</b> With the <b>record the video</b> tick next to Simulate, the
+      simulation is recorded: the map with its tiles, the routes, the shots lighting up, the take-off
+      points, the drone and the status line at the bottom. At the end of the flight (or with Stop)
+      <b>Download the video</b> appears: MP4 where the browser can write it (Chrome, Safari),
+      otherwise WebM, and if the server has ffmpeg the <b>MP4</b> button converts it there. It is the
+      file to send to whoever wants to see the flight before it happens. The video has the size of the
+      map on screen: widen the window before recording, and at 30× a one-hour flight lasts two
+      minutes.</p>
       <p><b>Moving between batteries.</b> Each leg is a flight of its own: the file carries no
       take-off point, the drone starts from where you are, flies straight to the leg's first
       waypoint and at the end returns to where it took off <i>that</i> time. Starting from the south
@@ -642,7 +650,12 @@
       get dangerous. All take-offs of a block from the same ground level. Below the simulation,
       <b>Take-off per leg</b> gives each leg its own point (one click on the map, the H1, H2… marker
       can be dragged): the simulation and the battery estimate start there, and the exported KML
-      marks the take-off points, so in the field you know where to stand.</p>
+      marks the take-off points, so in the field you know where to stand. <b>Optimise take-offs</b>
+      works them out by itself: for each leg the point halfway between first and last waypoint,
+      where outbound plus return is shortest, and legs whose points fall close (within 150 m) share
+      the take-off, so you move rarely; the message says how many points came out and how many
+      kilometres you save. It is a proposal on distance alone: check they are places you can stand,
+      at the same ground level, and drag them if needed; <b>Remove all</b> goes back to the main H.</p>
       <p><b>DJI's simulator does not exist for the Mini 4 Pro.</b> DJI Assistant 2 (Consumer Drones
       Series), on the Mac too, only does firmware updates, Flysafe data and log export for the
       Mini 4 Pro: in the release notes the Simulator appears only for Mavic 2, Air 2, Air 2S and
