@@ -630,6 +630,18 @@
       shots lighting up on the map, the return, the battery swap. The line below tells leg, phase,
       clock, shots taken and how much battery that leg is expected to use, transit included: above
       100%, shorten the minutes per battery or move the take-off closer.</p>
+      <p><b>Moving between batteries.</b> Each leg is a flight of its own: the file carries no
+      take-off point, the drone starts from where you are, flies straight to the leg's first
+      waypoint and at the end returns to where it took off <i>that</i> time. Starting from the south
+      and then moving north for the northern legs shortens outbound and return and improves the
+      signal. One caution: altitudes are <b>relative to the take-off point</b>. If you take off from
+      a spot higher or lower than the previous one, the whole leg shifts by that much: from the top
+      of a tell the drone flies higher over the plain (more overlap, a bit less detail), from the
+      plain after starting on the top it flies lower over the tell, and on 40-50 m obliques that can
+      get dangerous. All take-offs of a block from the same ground level. Below the simulation,
+      <b>Take-off per leg</b> gives each leg its own point (one click on the map, the H1, H2… marker
+      can be dragged): the simulation and the battery estimate start there, and the exported KML
+      marks the take-off points, so in the field you know where to stand.</p>
       <p><b>DJI's simulator does not exist for the Mini 4 Pro.</b> DJI Assistant 2 (Consumer Drones
       Series), on the Mac too, only does firmware updates, Flysafe data and log export for the
       Mini 4 Pro: in the release notes the Simulator appears only for Mavic 2, Air 2, Air 2S and
@@ -773,6 +785,41 @@
       </ol>
       <p>DJI Fly may draw the routes a bit crooked in the preview, but flies them fine. Here too,
       before leaving, a short leg over a meadow.</p>
+
+      <h3>The other drones: QGroundControl, Parrot, Litchi</h3>
+      <p>The planner also writes plans for those that do not speak DJI's KMZ, always one file per
+      leg, with altitudes above take-off and <b>distance</b> triggering (a photo every N metres,
+      independent of speed). The drone menu has an "Other drones" group with the camera profiles of
+      Autel EVO II Pro and Lite+, Parrot Anafi and Anafi Ai, Skydio 2: altitude, photo spacing and
+      GSD come out right even when you then fly with the maker's app.</p>
+      <ul class="elenco">
+        <li><b>QGroundControl (.plan)</b>: <b>ArduPilot and PX4</b> drones, that is the open survey
+        drones and the home-built ones. Open it in QGroundControl or Mission Planner, check altitude
+        and camera, upload to the drone. The autopilot triggers the shots
+        (<code>DO_SET_CAM_TRIGG_DIST</code>): the camera must be wired to it.</li>
+        <li><b>Parrot (.mavlink)</b>: <b>Anafi, Anafi USA and Anafi Ai</b>, in GroundSDK's dialect.
+        On iPhone or Android share the single leg's file with <b>FreeFlight 7</b>, which opens it in
+        Flight Plan; photos are GPS-lapse. The same file uploads from QGroundControl or with
+        GroundSDK.</li>
+        <li><b>Litchi (.csv)</b>: the <b>DJI models without waypoints in DJI Fly</b> (Mini 2 and SE,
+        Air 2 and 2S, Mavic 2, Phantom 4), which Litchi flies on iOS and Android. Import the CSV in
+        the Mission Hub (flylitchi.com/hub), save, and the mission shows up in the app. Camera
+        interpolated at the chosen pitch or aimed at the target point, a photo every N metres.</li>
+        <li><b>Autel</b> (EVO II V3, Enterprise): Autel Explorer imports a <b>KML</b>, which the
+        planner already writes; altitudes and actions are refined in the app. <b>Skydio</b>: no
+        import, only the camera profile to do the sums and fly with its own app.</li>
+      </ul>
+
+      <h3>From the iPhone: the Drone screen</h3>
+      <p>The iOS app does not fly (DJI's Mobile SDK is Android only), but from the airplane button
+      at the top it does everything else. <b>Plan from the server</b> takes the plan drawn in the
+      planner and shows its legs; <b>Files for the flight app</b> hands the share sheet the KMZ,
+      the QGroundControl plan, Parrot's MAVLink or Litchi's CSV, all legs in a zip or a single leg
+      from the button on its row (FreeFlight 7 wants the single leg). <b>Copy into DJI Fly</b> is
+      the iPhone version of the planner's command: pick once the folder <i>On My iPhone → DJI Fly →
+      wayline_mission</i> in the Files app, the app lists the missions saved there with their date,
+      assigns one leg to each and writes the KMZs in their place, with the right name. Then reopen
+      DJI Fly.</p>
 
       <h3>Or fly however you like</h3>
       <p>The plan is <b>optional</b>: fly by hand with DJI Fly and shoot as you see fit (useful for section faces, standing structures, details). Then close DJI Fly, open Photo3D and use <b>Fetch the photos from the drone</b>: the card is downloaded straight into the session — no card reader, no camera roll.</p>

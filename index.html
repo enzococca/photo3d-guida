@@ -671,6 +671,18 @@
       fase, cronometro, scatti fatti e quanta batteria stima di consumare quella tratta, andata e
       ritorno compresi: se supera il 100%, accorcia i minuti per batteria o sposta il decollo più
       vicino.</p>
+      <p><b>Spostarsi fra una batteria e l'altra.</b> Ogni tratta è un volo a sé: il file non
+      contiene il punto di decollo, il drone parte da dove sei, va dritto al primo waypoint della
+      tratta e a fine tratta torna al punto da cui è decollato <i>quella</i> volta. Partire da sud e
+      poi spostarsi a nord per le tratte a nord accorcia andata e ritorno e migliora il segnale.
+      Un'attenzione sola: le quote sono <b>relative al punto di decollo</b>. Se decolli da un punto
+      più alto o più basso del precedente, tutta la tratta si sposta di quel tanto: dalla cima di un
+      tell il drone vola più alto sulla piana (più sovrapposizione, un po' meno dettaglio), dalla
+      piana dopo aver iniziato dalla cima vola più basso sopra il tell, e sugli obliqui a 40-50 m può
+      diventare pericoloso. Tutti i decolli di un blocco dallo stesso livello di terreno. Sotto la
+      simulazione, <b>Decollo per tratta</b> dà a ogni tratta il suo punto (un click sulla mappa, il
+      marcatore H1, H2… si trascina): la simulazione e la stima di batteria partono da lì, e il KML
+      esportato segna i punti di decollo, così sul campo sai dove metterti.</p>
       <p><b>Il simulatore di DJI non c'è per il Mini 4 Pro.</b> DJI Assistant 2 (Consumer Drones
       Series), anche su Mac, per il Mini 4 Pro fa solo aggiornamento firmware, dati Flysafe ed
       esportazione dei log: il Simulator, nelle note di rilascio, compare solo per Mavic 2, Air 2,
@@ -819,6 +831,41 @@
       </ol>
       <p>DJI Fly può disegnare le rotte un po' storte in anteprima, ma le vola bene. Anche qui, prima
       di partire, una tratta corta sopra un prato.</p>
+
+      <h3>Gli altri droni: QGroundControl, Parrot, Litchi</h3>
+      <p>Il pianificatore scrive anche i piani per chi non parla il KMZ di DJI, sempre un file per
+      tratta, con le quote sopra il decollo e lo scatto <b>a distanza</b> (una foto ogni tot metri,
+      che non dipende dalla velocità). Nel menu del drone c'è il gruppo «Altri droni», con i profili
+      camera di Autel EVO II Pro e Lite+, Parrot Anafi e Anafi Ai, Skydio 2: quota, passo fra gli
+      scatti e GSD escono giusti anche se poi si vola con l'app del produttore.</p>
+      <ul class="elenco">
+        <li><b>QGroundControl (.plan)</b>: i droni <b>ArduPilot e PX4</b>, cioè i droni aperti da
+        rilievo e gli autocostruiti. Si apre in QGroundControl o Mission Planner, si controllano
+        quota e camera, si carica sul drone. Lo scatto lo comanda l'autopilota
+        (<code>DO_SET_CAM_TRIGG_DIST</code>): la camera deve essere collegata a lui.</li>
+        <li><b>Parrot (.mavlink)</b>: <b>Anafi, Anafi USA e Anafi Ai</b>, nel dialetto di GroundSDK.
+        Su iPhone o Android si condivide il file della singola tratta con <b>FreeFlight 7</b>, che
+        lo apre nel Flight Plan; le foto sono in GPS-lapse. Lo stesso file si carica da
+        QGroundControl o con GroundSDK.</li>
+        <li><b>Litchi (.csv)</b>: i <b>DJI senza waypoint in DJI Fly</b> (Mini 2 e SE, Air 2 e 2S,
+        Mavic 2, Phantom 4), che Litchi vola su iOS e Android. Si importa il CSV nel Mission Hub
+        (flylitchi.com/hub), si salva, e la missione compare nell'app. Camera interpolata
+        all'inclinazione voluta o puntata al punto di mira, foto ogni tot metri.</li>
+        <li><b>Autel</b> (EVO II V3, Enterprise): Autel Explorer importa un <b>KML</b>, che il
+        pianificatore già scrive; quote e azioni si rifiniscono nell'app. <b>Skydio</b>: niente
+        importazione, solo il profilo camera per fare i conti e volare con la sua app.</li>
+      </ul>
+
+      <h3>Dall'iPhone: la schermata Drone</h3>
+      <p>L'app iOS non pilota (il Mobile SDK di DJI è solo Android), ma dall'aeroplanino in alto fa
+      tutto il resto. <b>Piano dal server</b> prende il piano disegnato nel pianificatore e ne mostra
+      le tratte; <b>File per l'app di volo</b> manda al foglio di condivisione il KMZ, il piano
+      QGroundControl, il MAVLink di Parrot o il CSV di Litchi, tutte le tratte in uno zip o la
+      singola tratta dal pulsante sulla sua riga (per FreeFlight 7 serve la singola tratta).
+      <b>Copia in DJI Fly</b> è la versione iPhone del comando del pianificatore: si sceglie una
+      volta la cartella <i>Sul mio iPhone → DJI Fly → wayline_mission</i> nell'app File, l'app
+      elenca le missioni salvate lì con la data, assegna una tratta a ciascuna e scrive i KMZ al
+      posto loro, col nome giusto. Poi si riapre DJI Fly.</p>
 
       <h3>Oppure vola come vuoi</h3>
       <p>Il piano è <b>facoltativo</b>: vola a mano con DJI Fly e scatta a tuo giudizio (utile per
