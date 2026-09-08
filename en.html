@@ -829,7 +829,13 @@
         with its number and name in large type. Drag those too, into <code>waypoint/map_preview/</code>,
         replacing the ones with the same names: the mission keeps the name DJI Fly gave it (it lives in its
         database and cannot be written from outside), but in the library you recognise it by the picture.
-        <b>Copy to the device</b> writes them by itself. By hand, the path
+        <b>Copy to the device</b> writes them by itself. Missions in DJI Fly <b>cannot be renamed</b>: the
+        name is the time you created them. The panel reads it from each placeholder mission's file and shows
+        it next to the leg (“in DJI Fly: 08/09/2026 08:01:35”); the pairing stays in the plan and goes into
+        the Excel and HTML report (“DJI Fly mission” and “DJI Fly folder” columns) and onto the leg maps, so
+        in the field you know which mission to launch. The KMZ written over the placeholder keeps its creation
+        time, so the name in DJI Fly does not change. On a Mac, iDroid's temporary copy is listed by itself,
+        marked “names only”: that is what it is for, not copying. By hand, the path
         is <code>Android/data/dji.go.v5/files/waypoint/&lt;folder&gt;/</code>: replace the
         <code>.kmz</code> with the leg's one, <b>renamed to the folder's name</b>.</li>
         <li><b>Fly.</b> Reopen DJI Fly: the mission library shows the imported routes. Check altitude

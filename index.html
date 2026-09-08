@@ -874,7 +874,14 @@
         come quelle di DJI Fly): la mappa della tratta con numero e nome in grande. Trascina anche quelle,
         dentro <code>waypoint/map_preview/</code>, sostituendo le omonime: il nome della missione resta
         quello dato da DJI Fly (sta nel suo database e non si può scrivere da fuori), ma nella libreria la
-        riconosci dall'immagine. <b>Copia nel dispositivo</b> le scrive da sola. A mano, il percorso è
+        riconosci dall'immagine. <b>Copia nel dispositivo</b> le scrive da sola. Le missioni in DJI Fly
+        <b>non si rinominano</b>: il nome è l'ora in cui le hai create. Il pannello la legge dal file di ogni
+        missione fittizia e la mostra accanto alla tratta («in DJI Fly: 08/09/2026 08:01:35»); l'abbinamento
+        resta nel piano e finisce nella scheda Excel e HTML (colonne «Missione DJI Fly» e «Cartella DJI Fly») e
+        sulle mappe delle tratte, così in campo sai quale missione lanciare. Il KMZ scritto al posto della
+        fittizia conserva la sua ora di creazione, quindi il nome in DJI Fly non cambia. Sul Mac la copia
+        temporanea di iDroid viene elencata da sola, segnata «solo per i nomi»: serve a questo, non a copiare.
+        A mano, il percorso è
         <code>Android/data/dji.go.v5/files/waypoint/&lt;cartella&gt;/</code>: sostituisci il
         <code>.kmz</code> con quello della tratta, <b>rinominato col nome della cartella</b>.</li>
         <li><b>Vola.</b> Riapri DJI Fly: la libreria delle missioni mostra le rotte importate.
