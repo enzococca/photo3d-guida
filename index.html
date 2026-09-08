@@ -866,7 +866,15 @@
         alle altre, e un nome usato due volte viene segnato in rosso. Poi <b>Scarica le cartelle
         pronte</b>: uno zip con
         <code>&lt;cartella&gt;/&lt;cartella&gt;.kmz</code>, da trascinare dentro <code>waypoint/</code>
-        sostituendo le cartelle omonime. A mano, il percorso è
+        sostituendo le cartelle omonime. Attenzione: la cartella <code>waypoint</code> che iDroid apre nel
+        Finder sta in <code>Library/Containers/com.leonboettger.idroid/Data/tmp/</code> ed è una copia
+        temporanea sul Mac: incollare quel percorso in «Copia nel dispositivo» non scrive sul telecomando, e
+        il pianificatore lo rifiuta. Nello zip c'è anche la cartella <code>map_preview</code>, con
+        un'<b>anteprima per tratta</b> (<code>map_preview/&lt;cartella&gt;/&lt;cartella&gt;.jpg</code>, 1920×1080
+        come quelle di DJI Fly): la mappa della tratta con numero e nome in grande. Trascina anche quelle,
+        dentro <code>waypoint/map_preview/</code>, sostituendo le omonime: il nome della missione resta
+        quello dato da DJI Fly (sta nel suo database e non si può scrivere da fuori), ma nella libreria la
+        riconosci dall'immagine. <b>Copia nel dispositivo</b> le scrive da sola. A mano, il percorso è
         <code>Android/data/dji.go.v5/files/waypoint/&lt;cartella&gt;/</code>: sostituisci il
         <code>.kmz</code> con quello della tratta, <b>rinominato col nome della cartella</b>.</li>
         <li><b>Vola.</b> Riapri DJI Fly: la libreria delle missioni mostra le rotte importate.

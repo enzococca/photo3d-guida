@@ -820,7 +820,16 @@
         dropdown offers only the names not yet assigned to the others, and a name used twice is marked in
         red. Then
         <b>Download the ready folders</b>: a zip with <code>&lt;folder&gt;/&lt;folder&gt;.kmz</code>, to
-        drag into <code>waypoint/</code> replacing the folders with the same names. By hand, the path
+        drag into <code>waypoint/</code> replacing the folders with the same names. Beware: the
+        <code>waypoint</code> folder iDroid opens in the Finder lives in
+        <code>Library/Containers/com.leonboettger.idroid/Data/tmp/</code> and is a temporary copy on the Mac:
+        pasting that path into “Copy to the device” writes nothing to the controller, and the planner refuses
+        it. The zip also holds a <code>map_preview</code> folder with one <b>preview per leg</b>
+        (<code>map_preview/&lt;folder&gt;/&lt;folder&gt;.jpg</code>, 1920×1080 like DJI Fly's own): the leg's map
+        with its number and name in large type. Drag those too, into <code>waypoint/map_preview/</code>,
+        replacing the ones with the same names: the mission keeps the name DJI Fly gave it (it lives in its
+        database and cannot be written from outside), but in the library you recognise it by the picture.
+        <b>Copy to the device</b> writes them by itself. By hand, the path
         is <code>Android/data/dji.go.v5/files/waypoint/&lt;folder&gt;/</code>: replace the
         <code>.kmz</code> with the leg's one, <b>renamed to the folder's name</b>.</li>
         <li><b>Fly.</b> Reopen DJI Fly: the mission library shows the imported routes. Check altitude
