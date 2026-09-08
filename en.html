@@ -824,7 +824,9 @@
         <code>waypoint</code> folder iDroid opens in the Finder lives in
         <code>Library/Containers/com.leonboettger.idroid/Data/tmp/</code> and is a temporary copy on the Mac:
         pasting that path into “Copy to the device” writes nothing to the controller, and the planner refuses
-        it. The zip also holds a <code>map_preview</code> folder with one <b>preview per leg</b>
+        it; on a Mac it refuses any path outside <code>/Volumes</code>, because a <code>waypoint</code> folder
+        downloaded to the disk is a copy too, and writing into it scrambles the files. The zip also holds a
+        <code>map_preview</code> folder with one <b>preview per leg</b>
         (<code>map_preview/&lt;folder&gt;/&lt;folder&gt;.jpg</code>, 1920×1080 like DJI Fly's own): the leg's map
         with its number and name in large type. Drag those too, into <code>waypoint/map_preview/</code>,
         replacing the ones with the same names: the mission keeps the name DJI Fly gave it (it lives in its
