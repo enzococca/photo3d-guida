@@ -682,6 +682,39 @@
       zip delle sole immagini, una per tratta, da mostrare a chi vola. Le mappe usano le stesse foto satellitari del
       pianificatore, quindi servono la rete e qualche secondo.</p>
 
+      <h3>Progetta il volo: dagli obiettivi al piano (e l'AI, se la vuoi)</h3>
+      <p>Nel pianificatore, sopra «Copia in DJI Fly», c'è il riquadro <b>Progetta il volo</b>: invece
+      di scegliere a mano quota e sovrapposizioni, dici <b>che cosa vuoi ottenere</b> e il programma
+      calcola il resto, spiegando ogni scelta. <b>Disegna l'area</b>, scegli l'obiettivo dal menu —
+      <b>ortofoto</b> (centimetri per pixel), <b>modello del terreno (DEM)</b> (centimetri di cella:
+      il GSD viene più fine, perché una cella pulita vuole due o tre pixel per lato), <b>modello 3D
+      completo</b> (nadirale più due passate oblique incrociate a 45°, che vedono le pareti
+      verticali), <b>ispezione ravvicinata</b>, <b>ricognizione veloce</b> o <b>GSD a mano</b> —
+      scrivi il valore e premi <b>Progetta il volo</b>. Escono i blocchi pronti e l'elenco dei
+      perché: quanto GSD serve, a che quota viene con quella camera, come sono orientate le
+      strisciate, quante foto, minuti e batterie. Se il dettaglio chiesto richiederebbe di volare
+      sopra i <b>120 m</b> la quota si ferma lì e te lo dice, col GSD che ne viene davvero.</p>
+      <p><b>Quote del terreno</b> scarica le quote dell'area e mostra minima, massima, dislivello,
+      pendenza ed ettari. Vengono dalle tegole aperte di AWS (Terrain Tiles, Copernicus/SRTM, circa
+      30 m): gratuite, <b>senza nessuna chiave</b>, uguali su Mac, Windows e Linux; dove il dato ha
+      un buco si riprova da solo con un altro livello di dettaglio.</p>
+      <p><b>Segui il terreno</b> dà a <b>ogni waypoint la sua quota</b>: il drone resta alla stessa
+      distanza dal suolo, quindi il dettaglio non cambia dove il terreno sale — su un tell è la
+      differenza fra un'ortofoto uniforme e una che si sgrana in cima. Le quote sono riferite al
+      decollo, come vuole il file di DJI, e restano fra 10 e 120 m. Finiscono nel KMZ, nel KML e nel
+      GeoJSON, e l'app Android le ritrova: anche spezzando il volo in tratte, o riprendendo dopo il
+      cambio batteria, ogni punto vola alla sua quota.</p>
+      <p><b>Con l'AI.</b> Con la spunta <b>con l'AI</b> scrivi a parole tue che cosa ti serve («un
+      DEM a 4 cm e un'ortofoto ad alta risoluzione del tell, il terreno è mosso»): Claude legge area,
+      quote e camera e propone obiettivo, risoluzione, sovrapposizioni e se conviene seguire il
+      terreno, con la spiegazione e le avvertenze. <b>I numeri li rifà comunque il programma</b>, e
+      le sue scelte restano dentro limiti ragionevoli: il piano è volabile anche se l'AI sbaglia, e
+      senza AI il progettista funziona lo stesso. La <b>chiave Anthropic si registra una volta
+      sola</b> e resta sul computer, in <code>~/.photo3d/anthropic_key</code> (su Windows
+      <code>C:\Users\&lt;nome&gt;\.photo3d\anthropic_key</code>), fuori dal repository: la pagina
+      non la rimostra mai, ne vedi solo le ultime quattro lettere, e <b>Dimentica la chiave</b> la
+      cancella. Vale anche la variabile d'ambiente <code>ANTHROPIC_API_KEY</code>.</p>
+
       <h3>Simulare il volo, sullo schermo e col drone a terra</h3>
       <p>Nel pianificatore, sotto i blocchi, c'è la <b>Simulazione del volo</b>: <b>Decollo sulla
       mappa</b> mette il punto di partenza (H, trascinabile; se manca si parte dal primo punto del
@@ -794,7 +827,12 @@
         sopra i dati (batteria, quota e distanza dal punto di decollo, velocità, satelliti, tempo di volo),
         sotto i comandi sempre visibili: <b>Ferma</b>, <b>Torna a casa</b> (come il tasto del telecomando) e
         <b>Mappa</b>, che mostra il drone sulla rotta con i punti già volati. <b>Chiudi</b> torna alla schermata,
-        il pulsante <b>Vista di volo</b> la riapre, e lo schermo resta acceso finché è aperta.</li>
+        il pulsante <b>Vista di volo</b> la riapre, e lo schermo resta acceso finché è aperta. In volo
+        <b>«Punto X di N» avanza da solo</b>, dedotto dalla posizione del drone lungo la rotta, perché
+        l'indice mandato dal drone non sempre arriva; la mappa <b>insegue il drone</b> con la spunta
+        «Segui il drone»; i comandi della vista di volo dicono lì stesso com'è andata, così se il drone
+        rifiuta il rientro ne leggi il motivo. Dopo un <b>Ferma</b>, <b>Riprendi da dove ha lasciato</b>
+        compare sempre: se il punto raggiunto non si conosce, riparte dall'inizio della tratta.</li>
         <li><b>Riprendi da dove ha lasciato</b>: se il drone rientra prima della fine (batteria bassa,
         vento, un tuo Ferma), l'app ricorda l'ultimo punto toccato e dov'era. Al tocco costruisce il
         KMZ di quel che resta, arretrando di 20 m per non lasciare buchi, lo carica e riparte.

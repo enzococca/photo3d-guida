@@ -632,6 +632,41 @@
       alone, one per leg, to show whoever flies. The maps use the planner's satellite imagery, so they need the network
       and a few seconds.</p>
 
+      <h3>Design the flight: from the goal to the plan (with AI, if you want it)</h3>
+      <p>In the planner, above “Copy into DJI Fly”, there is the <b>Design the flight</b> panel:
+      instead of choosing altitude and overlaps by hand, you say <b>what you want to obtain</b> and
+      the program works out the rest, explaining every choice. <b>Draw the area</b>, pick the
+      objective from the menu — <b>orthophoto</b> (centimetres per pixel), <b>terrain model
+      (DEM)</b> (cell size in centimetres: the GSD comes out finer, because a clean cell wants two
+      or three pixels per side), <b>full 3D model</b> (nadir plus two crossed oblique passes at 45°,
+      which see the vertical walls), <b>close inspection</b>, <b>quick survey</b> or <b>GSD by
+      hand</b> — type the value and press <b>Design the flight</b>. Out come the blocks, ready, and
+      the list of reasons: the GSD needed, the altitude that gives it with that camera, how the
+      strips are oriented, how many shots, minutes and batteries. If the detail you ask for would
+      mean flying above <b>120 m</b>, the altitude stops there and says so, with the GSD you really
+      get.</p>
+      <p><b>Terrain elevations</b> fetches the elevations of the drawn area and reports minimum,
+      maximum, relief, slope and hectares. They come from the AWS open tiles (Terrain Tiles,
+      Copernicus/SRTM, about 30 m): free, <b>no key needed</b>, the same on Mac, Windows and Linux;
+      where the data has a hole it retries by itself at another zoom level.</p>
+      <p><b>Follow the terrain</b> gives <b>each waypoint its own height</b>: the drone keeps the
+      same distance from the ground, so detail does not change where the ground rises — on a mound
+      that is the difference between an even orthophoto and one that goes soft at the top. Heights
+      are relative to the take-off point, as DJI’s file requires, and stay between 10 and 120 m.
+      They are written into the KMZ, the KML and the GeoJSON, and the Android app reads them back:
+      even when the flight is split into legs, or resumed after a battery change, every point flies
+      at its own height.</p>
+      <p><b>With AI.</b> Tick <b>with AI</b> and write in your own words what you need (“a 4 cm DEM
+      and a high-resolution orthophoto of the mound, the ground is uneven”): Claude reads the area,
+      the elevations and the camera and proposes objective, resolution, overlaps and whether to
+      follow the terrain, with its reasoning and warnings. <b>The numbers are recomputed here
+      anyway</b>, and its choices are kept within sensible limits: the plan is flyable even if the
+      AI gets it wrong, and without AI the designer works just the same. The <b>Anthropic key is
+      saved once</b> and stays on the computer, in <code>~/.photo3d/anthropic_key</code> (on Windows
+      <code>C:\Users\&lt;name&gt;\.photo3d\anthropic_key</code>), outside the repository: the page
+      never shows it again, only its last four characters, and <b>Forget the key</b> deletes it. The
+      environment variable <code>ANTHROPIC_API_KEY</code> works too.</p>
+
       <h3>Simulating the flight, on screen and with the drone on the ground</h3>
       <p>In the planner, below the blocks, there is the <b>Flight simulation</b>: <b>Take-off on the
       map</b> places the starting point (H, draggable; if missing, the first point of the plan is
@@ -736,7 +771,7 @@
         <li><b>Take off</b>: the drone goes to the first point, flies the leg shooting and at the end
         <b>returns home</b> by itself. The app moves on to the next leg: swap the battery,
         <b>Prepare</b>, <b>Take off</b>.</li>
-        <li><b>Stop</b> interrupts at any moment; the controller's sticks always take priority. At take-off the <b>Flight view</b> opens by itself: the camera video full screen, the figures on top (battery, altitude and distance from the take-off point, speed, satellites, flight time), and the controls always in reach below: <b>Stop</b>, <b>Return to home</b> (same as the controller's button) and <b>Map</b>, which shows the drone on the route with the points already flown. <b>Close</b> goes back to the screen, the <b>Flight view</b> button reopens it, and the screen stays on while it is open.</li>
+        <li><b>Stop</b> interrupts at any moment; the controller's sticks always take priority. At take-off the <b>Flight view</b> opens by itself: the camera video full screen, the figures on top (battery, altitude and distance from the take-off point, speed, satellites, flight time), and the controls always in reach below: <b>Stop</b>, <b>Return to home</b> (same as the controller's button) and <b>Map</b>, which shows the drone on the route with the points already flown. <b>Close</b> goes back to the screen, the <b>Flight view</b> button reopens it, and the screen stays on while it is open. In flight “Point X of N” advances by itself, worked out from the drone's position along the route, because the index the drone sends does not always arrive; the map <b>follows the drone</b> while “Follow the drone” is ticked; the flight view's commands report their outcome right there, so if the drone refuses to return home you read why. After a <b>Stop</b>, <b>Resume where it left off</b> always appears: if the point reached is unknown, it restarts from the beginning of the leg.</li>
         <li><b>Resume where it left off</b>: if the drone comes back before the end (low battery, wind,
         your Stop), the app remembers the last point reached and where the drone was. On tap it builds
         the KMZ of what is left, stepping back 20 m so no gap is left, uploads it and starts again.
