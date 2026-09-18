@@ -987,6 +987,14 @@
       anything. The 3D libraries travel inside the server, so it works in the field with no
       Internet. Sections and profiles are still iPhone only.</p>
 
+      <h3>Terrain model and orthophoto (drone flights)</h3>
+      <p>When the photos carry coordinates, processing also produces — <b>with Metashape and with
+      WebODM alike</b> — <b>dem.tif</b> (the terrain model) and <b>orthophoto.tif</b> (the
+      straightened, scaled view from above), next to the model in the session folder. They open in
+      QGIS, and can be fetched from the server at
+      <code>/api/sessions/&lt;id&gt;/raster/dem.tif</code>. For an object photographed close up they
+      are not created: a vase has no terrain model.</p>
+
       <h3>Sections and profiles</h3>
       <ol class="elenco">
         <li>Tap the <b>scissors</b>.</li>

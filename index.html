@@ -1057,6 +1057,14 @@
       installargli niente. Le librerie 3D viaggiano dentro il server: sul campo, senza Internet,
       funziona lo stesso. Sezioni e profili restano per ora solo sull'iPhone.</p>
 
+      <h3>Il modello del terreno e l'ortofoto (voli col drone)</h3>
+      <p>Quando le foto hanno le coordinate, l'elaborazione produce anche — <b>sia con Metashape sia
+      con WebODM</b> — <b>dem.tif</b> (il modello del terreno) e <b>orthophoto.tif</b> (la vista
+      dall'alto raddrizzata e in scala), accanto al modello nella cartella della sessione. Si aprono
+      in QGIS, e si scaricano dal server con
+      <code>/api/sessions/&lt;id&gt;/raster/dem.tif</code>. Su un oggetto ripreso da vicino non
+      vengono creati: un vaso non ha un modello del terreno.</p>
+
       <h3>Sezioni e profili</h3>
       <ol class="elenco">
         <li>Tocca l'icona <b>forbici</b>.</li>
