@@ -1279,6 +1279,14 @@
           <p class="rimedio">Il decollo è rimasto da un altro piano: hai disegnato un'area nuova senza premere <strong>Nuovo</strong>. Per le quote che seguono il terreno il server lo ignora da solo (parte dal primo waypoint), ma va tolto con <strong>Togli quel decollo</strong> e rimesso al passo 6. Prima di questa correzione un piano così usciva con tutte le quote a 500 m: riaprilo e risalvalo, si sistema da solo.</p>
         </div>
         <div class="guasto">
+          <p class="sintomo">In volo qualcosa non torna (contatore fermo, quota che non si vede, scatti non contati)</p>
+          <p class="rimedio">A ogni missione l'app scrive una <strong>scatola nera</strong>: un CSV con quel che manda il drone e quel che decide l'app, secondo per secondo. Arriva al computer con le foto (cartella della sessione, <code>registri/</code>), oppure nella schermata Drone <strong>Condividi il registro dell'ultimo volo</strong>. Mandalo insieme alla descrizione di quel che hai visto.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">Cambio altezza o sovrapposizione sul telefono e il risultato resta uguale</p>
+          <p class="rimedio">Dalla 1.9.39 valgono anche sui piani che seguono il terreno: cambiando l'altezza tutte le quote si spostano di altrettanto, cambiando la sovrapposizione i punti si rifanno sul terreno che il piano porta con sé, e sotto i campi c'è scritto che cosa è successo. Solo se il blocco ha <strong>punti speciali</strong> restano quelle del piano: si cambiano dal pianificatore.</p>
+        </div>
+        <div class="guasto">
           <p class="sintomo">Android: non trovo come cancellare</p>
           <p class="rimedio">Un oggetto o un volo: <strong>tieni premuto</strong> sulla riga nell'elenco, o <strong>Elimina</strong> in alto dentro la sessione (sparisce dal telefono; quel che è sul computer resta). Il piano caricato: <strong>Togli il piano dal telefono</strong>, sotto i blocchi. Un piano sul server: <strong>Piano dal server</strong> → la ✕ accanto al nome.</p>
         </div>

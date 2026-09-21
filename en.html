@@ -1211,6 +1211,14 @@
           <p class="rimedio">The take-off was left over from another plan: you drew a new area without pressing <strong>New</strong>. For terrain-following heights the server ignores it by itself (it starts from the first waypoint), but remove it with <strong>Remove that take-off</strong> and place it again in step 6. Before this fix such a plan came out with every height at 500 m: reopen and save it again, it repairs itself.</p>
         </div>
         <div class="guasto">
+          <p class="sintomo">Something is off in flight (counter stuck, altitude missing, shots not counted)</p>
+          <p class="rimedio">At every mission the app writes a <strong>black box</strong>: a CSV with what the drone sends and what the app decides, second by second. It reaches the computer with the photos (session folder, <code>registri/</code>), or use <strong>Share the last flight's log</strong> in the Drone screen. Send it along with a description of what you saw.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">I change height or overlap on the phone and the result stays the same</p>
+          <p class="rimedio">From 1.9.39 they also apply to terrain-following plans: changing the height shifts every height by the same amount, changing the overlap rebuilds the points on the terrain the plan carries, and the line under the fields says what happened. Only when the block has <strong>special points</strong> do they stay as planned: change them in the planner.</p>
+        </div>
+        <div class="guasto">
           <p class="sintomo">Android: I cannot find how to delete</p>
           <p class="rimedio">An object or a flight: <strong>long-press</strong> its row in the list, or <strong>Delete</strong> at the top inside the session (it leaves the phone; what is on the computer stays). The loaded plan: <strong>Remove the plan from the phone</strong>, under the blocks. A plan on the server: <strong>Plan from server</strong> → the ✕ next to its name.</p>
         </div>
