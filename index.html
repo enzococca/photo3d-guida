@@ -1300,6 +1300,10 @@
           <p class="rimedio">Se salvi su un <strong>disco esterno</strong>, macOS deve autorizzare l'app: Impostazioni di Sistema → <b>Privacy e sicurezza → File e cartelle</b> (o <i>Unità esterne</i>) → attiva <b>Photo3DServer</b>. Succede dopo ogni aggiornamento dell'app.</p>
         </div>
         <div class="guasto">
+          <p class="sintomo">macOS: «Il server è uscito con codice 3»</p>
+          <p class="rimedio">La porta è ancora di un server precedente rimasto appeso (succedeva cambiando cartella). Dalla 1.9.42 l'app lo chiude da sola: premi di nuovo <b>Avvia</b>. Con una versione prima: nel Terminale <code>lsof -ti tcp:8765 | xargs kill</code>, poi Avvia.</p>
+        </div>
+        <div class="guasto">
           <p class="sintomo">Linux: il servizio non parte</p>
           <p class="rimedio">Guarda il motivo con <code>journalctl -u photo3d -f</code>. Quasi sempre è la porta occupata da un altro server già avviato.</p>
         </div>

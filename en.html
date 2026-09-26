@@ -1232,6 +1232,10 @@
           <p class="rimedio">If you save onto an <strong>external disk</strong>, macOS must authorise the app: System Settings → <b>Privacy &amp; Security → Files and Folders</b> (or <i>Removable Volumes</i>) → enable <b>Photo3DServer</b>. This comes back after every app update.</p>
         </div>
         <div class="guasto">
+          <p class="sintomo">macOS: “The server exited with code 3”</p>
+          <p class="rimedio">The port still belongs to a previous server left hanging (it happened when changing folder). From 1.9.42 the app closes it by itself: press <b>Start</b> again. On an earlier version: in Terminal <code>lsof -ti tcp:8765 | xargs kill</code>, then Start.</p>
+        </div>
+        <div class="guasto">
           <p class="sintomo">Linux: the service won't start</p>
           <p class="rimedio">Find out why with <code>journalctl -u photo3d -f</code>. Nearly always it is the port already taken by another running server.</p>
         </div>
