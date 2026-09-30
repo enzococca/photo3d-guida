@@ -580,6 +580,31 @@
         irregular shape better.</p>
       </div>
 
+      <h3>Rings, paths and terrain, drawn on the phone</h3>
+      <p>From 1.9.43 the Drone screen also draws what used to need the computer. A plan is made of
+      <b>blocks</b> (the row of chips above the map, with <b>Add block</b>), each with its own settings,
+      flown <b>one at a time</b> like the blocks that come from the server.</p>
+      <ul class="elenco">
+        <li><b>Grid</b>: the usual one, on the square around the centre or on the area you drew.</li>
+        <li><b>Ring</b>: a 36-vertex circle around a centre, camera looking at the centre (<b>Radius</b>
+        with the slider or the field). The centre follows the map until you fix it with <b>Set the centre
+        on the map</b>.</li>
+        <li><b>Path</b>: tap the points in order (<b>Draw the path</b>, then <b>Done</b>); <b>Closed</b>
+        returns to the first point, <b>Towards the centre</b> points the camera inwards instead of ahead.
+        For a wall, a road, the edge of a tell.</li>
+        <li><b>Follow the terrain</b>: the checkbox fetches the ground elevations (the same open tiles the
+        computer uses: internet is needed at that moment, not the Mac) and from then on every point of the
+        block flies at the same height above the ground. The elevation grid stays with the plan; if you move
+        the plan outside it, the line below says so and <b>Fetch the terrain</b> redoes it. Without internet
+        the block flies at a fixed height, and it says so.</li>
+      </ul>
+      <p><b>Plans stay with the project.</b> Each project remembers its own: the drawn one (blocks, camera,
+      terrain) and the imported or downloaded file. Reopen the project and they are back; <b>Remove this
+      block</b> and <b>Remove the plan from the phone</b> take them away. With <b>Save to the computer</b>
+      the drawn plan goes to the server in the planner's format: you find it in the web page, edit it there
+      (special points, targets, legs per battery) and fetch it from any phone with <b>Plan from the
+      server</b>. If a block follows the terrain but the phone had no internet, the computer computes the
+      elevations when saving.</p>
       <h3>Importing or exporting the plan (KML, KMZ, GeoJSON)</h3>
       <p>The plan can be prepared outside the app, in a GIS or in Google Earth, and brought in with
       <b>Import plan</b>. The app reads:</p>

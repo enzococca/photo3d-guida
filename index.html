@@ -628,6 +628,31 @@
         al lato corto si copre meglio una forma irregolare.</p>
       </div>
 
+      <h3>Anelli, percorsi e terreno, disegnati sul telefono</h3>
+      <p>Dalla 1.9.43 la schermata Drone disegna anche quello che prima si faceva solo sul computer.
+      Il piano è fatto di <b>blocchi</b> (la riga di chip sopra la mappa, con <b>Aggiungi blocco</b>),
+      ognuno coi suoi parametri, e si volano <b>uno alla volta</b> come i blocchi che arrivano dal server.</p>
+      <ul class="elenco">
+        <li><b>Griglia</b>: quella di sempre, sul quadrato attorno al centro o sull'area disegnata.</li>
+        <li><b>Anello</b>: un giro di 36 vertici attorno a un centro, con la camera che guarda il centro
+        (<b>Raggio</b> col cursore o nel campo). Il centro segue la mappa finché non lo fermi con
+        <b>Segna il centro sulla mappa</b>.</li>
+        <li><b>Percorso</b>: tocchi i punti in ordine (<b>Disegna il percorso</b>, poi <b>Fine</b>);
+        <b>Chiuso</b> torna al primo punto, <b>Verso il centro</b> fa guardare la camera dentro invece
+        che in avanti. Serve per un muro, una strada, il bordo di un tell.</li>
+        <li><b>Segue il terreno</b>: la spunta scarica le quote del suolo (le stesse tegole aperte del
+        computer: serve internet in quel momento, non il Mac) e da lì ogni punto del blocco vola alla
+        stessa distanza dal suolo. La griglia delle quote resta col piano; se lo sposti fuori da quella
+        scaricata la riga sotto lo dice e <b>Scarica il terreno</b> la rifà. Senza rete il blocco vola a
+        quota fissa, e lo si legge.</li>
+      </ul>
+      <p><b>I piani restano col progetto.</b> Ogni progetto ricorda i suoi: quello disegnato (blocchi,
+      camera, terreno) e il file importato o scaricato. Riaprendo il progetto li ritrovi; <b>Togli questo
+      blocco</b> e <b>Togli il piano dal telefono</b> li tolgono. Con <b>Salva sul computer</b> il piano
+      disegnato va sul server nel formato del pianificatore: lo ritrovi nella pagina web, lo modifichi lì
+      (punti speciali, target, tratte per batteria) e lo scarichi da qualunque telefono con <b>Piano dal
+      server</b>. Se un blocco segue il terreno ma il telefono non aveva rete, le quote le fa il computer
+      al salvataggio.</p>
       <h3>Importare o esportare il piano (KML, KMZ, GeoJSON)</h3>
       <p>Il piano si può preparare fuori dall'app, nel GIS o in Google Earth, e portarlo dentro con
       <b>Importa piano</b>. L'app legge:</p>
