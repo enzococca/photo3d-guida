@@ -653,7 +653,7 @@
       (punti speciali, target, tratte per batteria) e lo scarichi da qualunque telefono con <b>Piano dal
       server</b>. Se un blocco segue il terreno ma il telefono non aveva rete, le quote le fa il computer
       al salvataggio.</p>
-            <p><b>Senza rete e con il computer spento.</b> Sul campo si lavora lo stesso, e si sincronizza dopo:</p>
+            <p><b>Senza rete e con il computer spento (dalla 1.9.44).</b> Sul campo si lavora lo stesso, e si sincronizza dopo:</p>
       <ul class="elenco">
         <li><b>Salva sul computer</b> a computer spento non fallisce: il piano resta sul telefono segnato
         «da mandare» (la riga <i>Il piano aspetta il computer</i>) e parte da solo appena l'app vede il
@@ -702,6 +702,10 @@
       blocco ha un <b>interruttore</b>: spento resta nel piano ma non conta nei totali, non finisce nei
       file e non arriva al telefono, così tieni pronti i blocchi «se avanza tempo». I conti sono gli
       stessi dell'app Android.</p>
+      <div class="nota"><b>Anche i piani disegnati sul telefono arrivano qui.</b> Quelli salvati con <b>Salva sul
+      computer</b> stanno fra i piani salvati (passo 1, «apri un piano salvato») col nome del progetto seguito da
+      «· telefono»: si riaprono, si completano (punti speciali, target, tratte) e si risalvano; il telefono li
+      riprende con <b>Piano dal server</b>.</div>
       <p><b>Dove sono</b> porta la mappa dove si trova il computer (il browser chiede il permesso; funziona
       sull'indirizzo <code>127.0.0.1</code>, non su quello di rete in chiaro), «Vai a» accetta le
       coordinate scritte. <b>Nuovo</b> ricomincia da un piano vuoto (la pagina altrimenti riapre l'ultimo lasciato sullo
@@ -1330,7 +1334,15 @@
         </div>
         <div class="guasto">
           <p class="sintomo">Android: non trovo come cancellare</p>
-          <p class="rimedio">Un oggetto o un volo: <strong>tieni premuto</strong> sulla riga nell'elenco, o <strong>Elimina</strong> in alto dentro la sessione (sparisce dal telefono; quel che è sul computer resta). Il piano caricato: <strong>Togli il piano dal telefono</strong>, sotto i blocchi. Un piano sul server: <strong>Piano dal server</strong> → la ✕ accanto al nome.</p>
+          <p class="rimedio">Un oggetto o un volo: <strong>tieni premuto</strong> sulla riga nell'elenco, o <strong>Elimina</strong> in alto dentro la sessione (sparisce dal telefono; quel che è sul computer resta). Il piano importato: <strong>Togli il piano dal telefono</strong>; un blocco disegnato: <strong>Togli questo blocco</strong>. Un piano sul server: <strong>Piano dal server</strong> → la ✕ accanto al nome.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">Android: «Salva sul computer» dice che il piano aspetta il computer</p>
+          <p class="rimedio">È normale a computer spento o fuori dalla sua rete: il piano è sul telefono e parte da solo appena l'app vede il server (accendi il Mac sulla stessa rete, o riapri l'app). Se il Mac è acceso e non parte: parola d'ordine (errore 401) o telefono che non lo vede (semaforo nella prima schermata).</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">Android: «Segue il terreno» resta a quota fissa</p>
+          <p class="rimedio">Mancano le quote: serve internet in quel momento, oppure la zona preparata prima con <strong>Prepara la zona per lavorare senza rete</strong>. L'app riprova da sola ogni mezzo minuto; salvando sul computer le quote le fa il Mac.</p>
         </div>
         <div class="guasto">
           <p class="sintomo">macOS: premo Avvia e il server non parte</p>

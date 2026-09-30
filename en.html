@@ -605,7 +605,7 @@
       (special points, targets, legs per battery) and fetch it from any phone with <b>Plan from the
       server</b>. If a block follows the terrain but the phone had no internet, the computer computes the
       elevations when saving.</p>
-            <p><b>Without internet and with the computer off.</b> You still work in the field, and sync later:</p>
+            <p><b>Without internet and with the computer off (from 1.9.44).</b> You still work in the field, and sync later:</p>
       <ul class="elenco">
         <li><b>Save to the computer</b> with the computer off does not fail: the plan stays on the phone
         marked “to send” (the line <i>The plan is waiting for the computer</i>) and goes by itself as soon
@@ -654,6 +654,10 @@
       bottom. Each block has a <b>switch</b>: off, it stays in the plan but is left out of the totals,
       the files and what the phone downloads, so “if time allows” blocks stay ready. The arithmetic is
       the same as in the Android app.</p>
+      <div class="nota"><b>Plans drawn on the phone land here too.</b> Those saved with <b>Save to the computer</b>
+      are among the saved plans (step 1, “open a saved plan”) under the project name followed by “· telefono”:
+      reopen them, complete them (special points, targets, legs) and save again; the phone fetches them back with
+      <b>Plan from the server</b>.</div>
       <p><b>Where am I</b> moves the map to where the computer is (the browser asks for permission; it
       works on the <code>127.0.0.1</code> address, not on the plain network one), “Go to” accepts typed
       coordinates. <b>New</b> starts again from an empty plan (otherwise the page reopens the last one left on
@@ -1264,7 +1268,15 @@
         </div>
         <div class="guasto">
           <p class="sintomo">Android: I cannot find how to delete</p>
-          <p class="rimedio">An object or a flight: <strong>long-press</strong> its row in the list, or <strong>Delete</strong> at the top inside the session (it leaves the phone; what is on the computer stays). The loaded plan: <strong>Remove the plan from the phone</strong>, under the blocks. A plan on the server: <strong>Plan from server</strong> → the ✕ next to its name.</p>
+          <p class="rimedio">An object or a flight: <strong>long-press</strong> its row in the list, or <strong>Delete</strong> at the top inside the session (it leaves the phone; what is on the computer stays). The imported plan: <strong>Remove the plan from the phone</strong>; a drawn block: <strong>Remove this block</strong>. A plan on the server: <strong>Plan from server</strong> → the ✕ next to its name.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">Android: “Save to the computer” says the plan is waiting for the computer</p>
+          <p class="rimedio">Normal when the computer is off or not on its network: the plan is on the phone and goes by itself as soon as the app sees the server (switch the Mac on, on the same network, or reopen the app). If the Mac is on and it still does not go: the password (error 401) or the phone not seeing it (the light on the first screen).</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">Android: “Follow the terrain” stays at a fixed height</p>
+          <p class="rimedio">The elevations are missing: internet is needed at that moment, or the area prepared beforehand with <strong>Prepare the area to work without internet</strong>. The app retries by itself every half minute; when saving to the computer, the Mac computes them.</p>
         </div>
         <div class="guasto">
           <p class="sintomo">macOS: I press Start and the server doesn't run</p>
