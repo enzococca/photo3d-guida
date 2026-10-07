@@ -1193,7 +1193,7 @@
       <p>In the Photo3D Server window, section <b>Access from outside</b>:</p>
       <ol class="elenco">
         <li>Turn on <b>Ask for a password (token)</b>: it is created on the spot and shown next to it, with a copy button. Restart the server so it takes effect.</li>
-        <li>Choose <b>Cloudflare (instant)</b> — no account, a new address at every start — or <b>Tailscale (fixed address)</b>, and press <b>Open to the public</b>.</li>
+        <li>Choose <b>Cloudflare (instant)</b> — no account, a new address at every start — or <b>Tailscale (fixed address)</b>, and press <b>Open to the public</b>. On Windows and Linux <code>cloudflared</code> downloads by itself the first time (about 60 MB) and the link opens as soon as it is ready; Tailscale must be installed and signed in to your account.</li>
         <li>When the <code>https://…</code> address appears with the green padlock, you are online. <b>Close</b> shuts it down.</li>
       </ol>
       <p>The <b>QR code</b> in the window updates itself: scanning it, the app receives the public address and the password together.</p>
