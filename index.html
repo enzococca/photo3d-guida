@@ -1137,6 +1137,14 @@
       <div class="nota attenzione">
         <p><b>Nei rilievi di scavo o da drone lascia perdere.</b> Lì l'oggetto è il terreno: senza tocco non viene fatta nessuna maschera, ed è giusto così.</p>
       </div>
+      <p><b>Su Windows e Linux il riconoscimento si installa a parte.</b> L'eseguibile non lo porta dentro (torch
+      pesa centinaia di MB): nella finestra del server, riquadro <b>Riconoscimento oggetto (SAM2)</b>, premi
+      <b>Scarica e installa (circa 500 MB)</b> col server avviato. Il server scarica <code>uv</code>, un Python suo,
+      torch (la versione senza CUDA: va su qualunque PC) e i pesi di SAM2 in una cartella a parte
+      (<code>%LOCALAPPDATA%\Photo3D\engines\sam2</code> su Windows, <code>~/.photo3d/engines/sam2</code> su Linux),
+      come fa per il motore gratuito; l'avanzamento sta nella scheda <b>Registro</b>. Serve internet una volta sola;
+      da lì le maschere funzionano come sul Mac. Senza schermo: <code>photo3d-server --installa-motore sam2</code>.
+      Sul Mac non serve: l'app li scarica da sé alla prima apertura.</p>
     </section>
 
     <section class="passo" id="p7">
@@ -1351,6 +1359,10 @@
         <div class="guasto">
           <p class="sintomo">macOS: «Il server è uscito con codice 3»</p>
           <p class="rimedio">La porta è ancora di un server precedente rimasto appeso (succedeva cambiando cartella). Dalla 1.9.42 l'app lo chiude da sola: premi di nuovo <b>Avvia</b>. Con una versione prima: nel Terminale <code>lsof -ti tcp:8765 | xargs kill</code>, poi Avvia.</p>
+        </div>
+        <div class="guasto">
+          <p class="sintomo">Windows/Linux: «SAM2 non incluso» o le maschere non partono</p>
+          <p class="rimedio">Dalla 1.9.45 si installa dalla finestra del server: <strong>Riconoscimento oggetto (SAM2) → Scarica e installa</strong>, col server avviato e con internet (circa 500 MB, una volta). Se fallisce, la ragione è nella scheda Registro; riprovando riparte da dove era (uv e i pesi già scaricati restano).</p>
         </div>
         <div class="guasto">
           <p class="sintomo">Linux: il servizio non parte</p>
