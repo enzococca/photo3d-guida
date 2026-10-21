@@ -455,6 +455,11 @@
               <td>Gratuito</td>
               <td>Oggetti e reperti senza licenza: si installa da solo dall'app, con maschere e scala col tocco. Sul Mac è più lento di Metashape (vedi la sezione dedicata più sotto).</td>
             </tr>
+            <tr>
+              <td><b>PyArchInit Photogrammetry</b></td>
+              <td>Gratuito</td>
+              <td>Scavi, oggetti e voli senza licenza, georeferenziati coi target ArUco o coi GCP: modello, nuvola, DEM e ortofoto, e un progetto da aprire nell'app PyArchInit Photogrammetry (vedi più sotto).</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -484,6 +489,24 @@
         <li>la fusione di due lati non è ancora disponibile su questo motore;</li>
         <li>durante la fase <b>Mappe di profondità</b> la barra di avanzamento riparte da zero più volte: sono le sottofasi interne di OpenMVS (stima, filtro, fusione), non un blocco;</li>
         <li>un primo ciclo completo su Apple Silicon (64 foto, preset veloce) ha richiesto circa dieci minuti.</li>
+      </ul>
+
+      <h3>Motore PyArchInit Photogrammetry (dalla 1.9.51)</h3>
+      <p>Il motore libero di <a href="https://github.com/enzococca/pyarchinit-photogrammetry">pyarchinit-photogrammetry</a>, pensato per lo scavo: allinea le foto, georeferenzia coi target ArUco/AprilTag o coi GCP messi a mano, e fa nuvola, modello con texture, DEM e ortofoto. Si installa col bottone <b>Installa</b> nel riquadro <i>Motore PyArchInit Photogrammetry</i> (app Mac e finestra di Windows e Linux), oppure dal telefono al primo invio di una sessione che lo usa. Da terminale:</p>
+      <pre><code><span class="p">$</span> photo3d-server --installa-motore ppg</code></pre>
+      <p>Cosa scarica dipende dal computer:</p>
+      <ul>
+        <li><b>Mac Apple Silicon e Linux (x86_64)</b>: il pacchetto di PyPI in una cartella a parte, circa 400 MB. Se l'app <b>PyArchInit Photogrammetry</b> è già in Applicazioni (dal suo DMG), il server usa quella e non installa niente;</li>
+        <li><b>Windows, anche ARM</b>: lo zip dell'app dall'ultimo rilascio su GitHub, controllato con lo sha256 che GitHub pubblica (250 MB per ARM, 480 per x64);</li>
+        <li><b>Mac Intel e Linux ARM</b>: non disponibile.</li>
+      </ul>
+      <p><b>Cosa sapere:</b></p>
+      <ul>
+        <li>i target riconosciuti sono gli <b>ArUco/AprilTag</b> (quelli che stampa il motore con <code>ppg markers sheet</code>), non i target circolari di Metashape; funzionano anche i <b>GCP</b> messi a mano nella pagina GCP, la <b>scala col tocco</b> e la <b>stecca</b>;</li>
+        <li>le maschere non le usa: scegliendolo, il telefono le spegne;</li>
+        <li>DEM e ortofoto escono solo se la sessione è georeferenziata (almeno tre punti) o in scala;</li>
+        <li>nella cartella <code>metashape</code> della sessione c'è anche <b><code>ppg_project.ppg</code></b>: si apre nell'app PyArchInit Photogrammetry per sezioni, unità stratigrafiche, pulizia e pubblicazione nel database PyArchInit;</li>
+        <li>prova sul Mac (Apple Silicon): 28 foto con 8 target, tutte allineate, errore sui target 0,7 mm, dieci secondi col preset veloce.</li>
       </ul>
     </section>
 
@@ -1091,7 +1114,7 @@
       <p>Il pianificatore scrive anche i piani per chi non parla il KMZ di DJI, sempre un file per
       tratta, con le quote sopra il decollo e lo scatto <b>a distanza</b> (una foto ogni tot metri,
       che non dipende dalla velocità). Nel menu del drone c'è il gruppo «Altri droni», con i profili
-      camera di Autel EVO II Pro e Lite+, Parrot Anafi e Anafi Ai, Skydio 2: quota, passo fra gli
+      camera di Autel EVO II Pro e Lite+, Parrot Anafi e Anafi Ai, Skydio 2, DJI Mavic 2 Enterprise Advanced e Phantom 4 Multispectral: quota, passo fra gli
       scatti e GSD escono giusti anche se poi si vola con l'app del produttore.</p>
       <ul class="elenco">
         <li><b>QGroundControl (.plan)</b>: i droni <b>ArduPilot e PX4</b>, cioè i droni aperti da
@@ -1109,6 +1132,12 @@
         <li><b>Autel</b> (EVO II V3, Enterprise): Autel Explorer importa un <b>KML</b>, che il
         pianificatore già scrive; quote e azioni si rifiniscono nell'app. <b>Skydio</b>: niente
         importazione, solo il profilo camera per fare i conti e volare con la sua app.</li>
+        <li><b>DJI Mavic 2 Enterprise Advanced e Phantom 4 Multispectral</b>: l'app Android non li
+        pilota (il Mobile SDK v5 non li conosce) e DJI Fly non li vola. Il profilo serve a scegliere
+        quota, sovrapposizione e GSD; il volo si fa con <b>DJI Pilot</b> (M2EA) o <b>DJI GS Pro</b>
+        su iPad (P4M), come missione di mappatura sull'area esportata in <b>KML</b>. Che le due app
+        accettino quel KML non è ancora provato. Il P4M ha una camera RGB da 2 MP: va bene per gli
+        indici della vegetazione, poco per un modello 3D di dettaglio.</li>
       </ul>
 
       <h3>Dall'iPhone: la schermata Drone</h3>

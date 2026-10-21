@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photo3D · Privacy</title>
+<style>
+  :root { --sfondo: #fbfaf7; --testo: #1f2328; --tenue: #59636e; --linea: #e3e0d8; --accento: #9a5b13; }
+  @media (prefers-color-scheme: dark) {
+    :root { --sfondo: #16181b; --testo: #e6e6e3; --tenue: #a3a8ae; --linea: #2c3035; --accento: #e0a35a; }
+  }
+  body { margin: 0; background: var(--sfondo); color: var(--testo);
+         font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.7em; margin: 0 0 4px; }
+  h2 { font-size: 1.2em; margin: 32px 0 8px; color: var(--accento); }
+  p, li { color: var(--testo); }
+  .tenue { color: var(--tenue); font-size: .9em; }
+  hr { border: 0; border-top: 1px solid var(--linea); margin: 48px 0; }
+  a { color: var(--accento); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Photo3D · Privacy</h1>
+  <p class="tenue">Ultimo aggiornamento: 21 ottobre 2026 · <a href="#en">English below</a></p>
+
+  <p>Photo3D è un'app per la fotogrammetria: scatta le foto di un oggetto, di uno scavo o di un
+  volo con il drone e le manda a un computer <b>tuo</b> su cui gira Photo3D Server, che le elabora.
+  Non c'è un account, non c'è un servizio cloud dello sviluppatore, non ci sono pubblicità né
+  strumenti di analisi o tracciamento.</p>
+
+  <h2>Che cosa resta sul telefono</h2>
+  <p>Le foto, le sessioni, i piani di volo e le impostazioni stanno nella memoria dell'app sul
+  tuo dispositivo. Si cancellano eliminando la sessione o l'app.</p>
+
+  <h2>Che cosa esce dal telefono, e verso chi</h2>
+  <ul>
+    <li><b>Al tuo computer</b>: le foto e i dati della sessione (nome, qualità scelta, punti
+    toccati per la scala o per isolare l'oggetto) vanno solo all'indirizzo del server che
+    scegli tu, sulla rete locale o tramite un collegamento pubblico che apri tu dal server
+    (Cloudflare o Tailscale). Lo sviluppatore non li riceve.</li>
+    <li><b>Al drone</b>: i piani di volo vanno al drone collegato (DJI o Parrot).</li>
+    <li><b>Mappe e terreno</b>: per mostrare la mappa e le quote del terreno l'app scarica tessere
+    da servizi pubblici di mappe; quei servizi vedono la zona richiesta e l'indirizzo IP, come
+    per qualsiasi mappa.</li>
+    <li><b>Aggiornamenti</b>: l'app può controllare su GitHub se esiste una versione nuova.</li>
+  </ul>
+
+  <h2>Permessi</h2>
+  <ul>
+    <li><b>Fotocamera</b>: per scattare le foto della sessione.</li>
+    <li><b>Libreria foto</b>: solo per importare le foto che scegli tu.</li>
+    <li><b>Rete locale</b>: per trovare il computer con Photo3D Server.</li>
+    <li><b>Posizione</b> (mentre usi l'app): per collegarsi al drone e mostrare il volo sulla
+    mappa. La posizione non viene inviata allo sviluppatore.</li>
+  </ul>
+
+  <h2>Beta test (TestFlight)</h2>
+  <p>Durante il beta test Apple raccoglie, attraverso TestFlight, i dati descritti nella sua
+  informativa (per esempio i rapporti di arresto anomalo e i commenti che invii). Lo
+  sviluppatore li vede solo in App Store Connect.</p>
+
+  <h2>Contatti</h2>
+  <p>Enzo Cocca · <a href="mailto:enzo.ccc@gmail.com">enzo.ccc@gmail.com</a></p>
+
+  <hr>
+
+  <h1 id="en">Photo3D · Privacy</h1>
+  <p class="tenue">Last updated: 21 October 2026</p>
+
+  <p>Photo3D is a photogrammetry app: it takes the photos of an object, an excavation or a drone
+  flight and sends them to a computer of <b>yours</b> running Photo3D Server, which processes them.
+  There is no account, no cloud service run by the developer, no ads and no analytics or
+  tracking tools.</p>
+
+  <h2>What stays on the phone</h2>
+  <p>Photos, sessions, flight plans and settings are kept in the app's storage on your device.
+  They are deleted by deleting the session or the app.</p>
+
+  <h2>What leaves the phone, and where to</h2>
+  <ul>
+    <li><b>Your computer</b>: photos and session data (name, chosen quality, points tapped for
+    scale or to isolate the object) go only to the server address you choose, on the local network
+    or through a public link you open yourself from the server (Cloudflare or Tailscale). The
+    developer does not receive them.</li>
+    <li><b>The drone</b>: flight plans go to the connected drone (DJI or Parrot).</li>
+    <li><b>Maps and terrain</b>: to show the map and terrain heights the app downloads tiles from
+    public map services; those services see the requested area and the IP address, as with any
+    map.</li>
+    <li><b>Updates</b>: the app may check GitHub for a newer version.</li>
+  </ul>
+
+  <h2>Permissions</h2>
+  <ul>
+    <li><b>Camera</b>: to take the session photos.</li>
+    <li><b>Photo library</b>: only to import the photos you pick.</li>
+    <li><b>Local network</b>: to find the computer running Photo3D Server.</li>
+    <li><b>Location</b> (while using the app): to connect to the drone and show the flight on the
+    map. Your location is not sent to the developer.</li>
+  </ul>
+
+  <h2>Beta testing (TestFlight)</h2>
+  <p>During beta testing Apple collects, through TestFlight, the data described in its own policy
+  (for example crash reports and the feedback you send). The developer sees them only in App
+  Store Connect.</p>
+
+  <h2>Contact</h2>
+  <p>Enzo Cocca · <a href="mailto:enzo.ccc@gmail.com">enzo.ccc@gmail.com</a></p>
+</main>
+</body>
+</html>

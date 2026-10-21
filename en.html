@@ -442,6 +442,7 @@
             <tr><td><b>Agisoft Metashape Pro</b></td><td>Paid licence</td><td>Objects and finds: tap-to-scale, merging two passes, and the best results on difficult surfaces.</td></tr>
             <tr><td><b>WebODM (NodeODM)</b></td><td>Free</td><td>Drone surveys and topography, or computers without a licence. On Linux with an NVIDIA card it is very fast.</td></tr>
             <tr><td><b>Open engine (COLMAP + OpenMVS)</b></td><td>Free</td><td>Objects and finds without a licence: installs itself from the app, with masks and tap-to-scale. Slower than Metashape on a Mac (see the dedicated section below).</td></tr>
+            <tr><td><b>PyArchInit Photogrammetry</b></td><td>Free</td><td>Excavations, objects and flights without a licence, georeferenced with ArUco targets or GCPs: model, point cloud, DEM and orthophoto, plus a project to open in the PyArchInit Photogrammetry app (see below).</td></tr>
           </tbody>
         </table>
       </div>
@@ -471,6 +472,24 @@
         <li>merging two sides is not yet available on this engine;</li>
         <li>during the <b>depth maps</b> phase the progress bar restarts from zero several times: those are OpenMVS's internal sub-phases (estimate, filter, fuse), not a hang;</li>
         <li>a first full run on Apple Silicon (64 photos, preview preset) took roughly ten minutes.</li>
+      </ul>
+
+      <h3>PyArchInit Photogrammetry engine (from 1.9.51)</h3>
+      <p>The free engine of <a href="https://github.com/enzococca/pyarchinit-photogrammetry">pyarchinit-photogrammetry</a>, made for excavations: it aligns the photos, georeferences them with ArUco/AprilTag targets or hand-placed GCPs, and builds point cloud, textured model, DEM and orthophoto. Install it with the <b>Install</b> button in the <i>PyArchInit Photogrammetry engine</i> panel (Mac app and the Windows and Linux window), or from the phone at the first upload of a session that uses it. From the terminal:</p>
+      <pre><code><span class="p">$</span> photo3d-server --installa-motore ppg</code></pre>
+      <p>What it downloads depends on the computer:</p>
+      <ul>
+        <li><b>Apple Silicon Mac and Linux (x86_64)</b>: the PyPI package in a separate folder, about 400 MB. If the <b>PyArchInit Photogrammetry</b> app is already in Applications (from its DMG), the server uses it and installs nothing;</li>
+        <li><b>Windows, ARM included</b>: the app's zip from the latest GitHub release, checked against the sha256 GitHub publishes (250 MB for ARM, 480 for x64);</li>
+        <li><b>Intel Mac and Linux ARM</b>: not available.</li>
+      </ul>
+      <p><b>What to know:</b></p>
+      <ul>
+        <li>the targets it recognises are <b>ArUco/AprilTag</b> (the ones the engine prints with <code>ppg markers sheet</code>), not Metashape's circular targets; hand-placed <b>GCPs</b> from the GCP page, <b>tap-to-scale</b> and the <b>scale bar</b> work too;</li>
+        <li>it does not use masks: choosing it, the phone turns them off;</li>
+        <li>DEM and orthophoto come out only when the session is georeferenced (at least three points) or scaled;</li>
+        <li>the session's <code>metashape</code> folder also holds <b><code>ppg_project.ppg</code></b>: open it in the PyArchInit Photogrammetry app for sections, stratigraphic units, cleaning and publishing to the PyArchInit database;</li>
+        <li>test on a Mac (Apple Silicon): 28 photos with 8 targets, all aligned, 0.7 mm error on the targets, ten seconds with the preview preset.</li>
       </ul>
     </section>
 
@@ -1029,7 +1048,7 @@
       <p>The planner also writes plans for those that do not speak DJI's KMZ, always one file per
       leg, with altitudes above take-off and <b>distance</b> triggering (a photo every N metres,
       independent of speed). The drone menu has an "Other drones" group with the camera profiles of
-      Autel EVO II Pro and Lite+, Parrot Anafi and Anafi Ai, Skydio 2: altitude, photo spacing and
+      Autel EVO II Pro and Lite+, Parrot Anafi and Anafi Ai, Skydio 2, DJI Mavic 2 Enterprise Advanced and Phantom 4 Multispectral: altitude, photo spacing and
       GSD come out right even when you then fly with the maker's app.</p>
       <ul class="elenco">
         <li><b>QGroundControl (.plan)</b>: <b>ArduPilot and PX4</b> drones, that is the open survey
@@ -1047,6 +1066,12 @@
         <li><b>Autel</b> (EVO II V3, Enterprise): Autel Explorer imports a <b>KML</b>, which the
         planner already writes; altitudes and actions are refined in the app. <b>Skydio</b>: no
         import, only the camera profile to do the sums and fly with its own app.</li>
+        <li><b>DJI Mavic 2 Enterprise Advanced and Phantom 4 Multispectral</b>: the Android app
+        cannot fly them (Mobile SDK v5 does not know them) and DJI Fly does not fly them. The profile
+        sets altitude, overlap and GSD; the flight is done with <b>DJI Pilot</b> (M2EA) or <b>DJI GS
+        Pro</b> on iPad (P4M), as a mapping mission over the area exported as <b>KML</b>. Whether the
+        two apps accept that KML is not tested yet. The P4M has a 2 MP RGB camera: fine for vegetation
+        indices, weak for a detailed 3D model.</li>
       </ul>
 
       <h3>From the iPhone: the Drone screen</h3>
